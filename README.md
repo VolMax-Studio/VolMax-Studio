@@ -181,7 +181,7 @@ Our development team brings extensive experience with **312+ collaborations** an
 - **GitHub Organization:** [@VolMax-Studio](https://github.com/VolMax-Studio)
 - **Previous Portfolio:** [@Whitefox980](https://github.com/Whitefox980) 
 - **Google Play Publisher:** VolMax Studio
-- **Email:** contact@volmax-studio.com
+- **Email:** volmax.core@gmail.com 
 
 ### 🤝 Open to Collaboration
 - Industry partnerships
