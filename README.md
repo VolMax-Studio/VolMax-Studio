@@ -40,8 +40,9 @@ Revolutionary AR planning tool for electricians combining:
 - Automated bill of materials
 - Professional project exports
 
--# 👗 FitAR – AI/AR Fashion Try-On App
-
+-👗 FitAR – AI/AR Fashion Try-On App
+![FitAR Logo](
+https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
 **FitAR** je revolucionarna mobilna aplikacija koja koristi **Augmented Reality (AR)** i **AI** za virtuelno isprobavanje odeće pomoću **3D skeniranog modela tela**. Korisnik se skenira jednom, a potom isprobava stotine outfita iz udobnosti svog doma – ili čak direktno u prodavnici pomoću "Live Mode" skeniranja barkoda.
 
 ---
