@@ -33,12 +33,39 @@ Revolutionary AR planning tool for electricians combining:
 - **AI Cost Calculation** - Automatic material and labor estimates  
 - **Professional Reports** - Instant PDF project documentation
 - **Industry Standards** - Compliance with electrical codes
+>>> ElektricAR<<<
+je inovativna mobilna aplikacija koja koristi Augmented Reality (AR) i AI kako bi električarima omogućila precizno planiranje, vizuelizaciju i instalaciju električnih sistema direktno na gradilištu ili u objektu.
+Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zidove — pre nego što uopšte započne fizički rad.
 
-**Key Features:**
-- Real-time AR element placement
-- Smart cable routing optimization
-- Automated bill of materials
-- Professional project exports
+
+---
+
+🚀 Ključne funkcionalnosti
+
+🧠 AR elektro planiranje – Postavljanje kablova, utičnica i prekidača direktno kroz kameru
+📏 Precizno pozicioniranje – Merenje razdaljina i visina uz pomoć AR scale sistema
+🔌 Komponente iz kataloga – Ugrađeni brendovi i modeli za direktnu simulaciju
+📸 Snimi elektro plan – Generiši PDF izveštaj sa slikama i dimenzijama
+🤖 AI asistencija – Preporuke položaja prema standardima i tipskim projektima
+💾 Istorija projekata – Svi planovi sačuvani u cloud-u za kasniji pristup
+📤 Deljenje sa klijentima – Šalji planove direktno mejlom ili kao QR kod
+
+
+---
+
+🌐 Tehnologije
+
+React Native + Expo – Frontend mobilne aplikacije
+
+Firebase – Auth, baza planova, storage za slike
+
+8thWall / ARCore / ARKit – AR renderovanje u realnom prostoru
+
+Node.js – Za AI preporuke i obradu planova
+
+Tailwind CSS + ShadCN (planirano) – Admin panel i preglede za web
+
+
 
 -👗 FitAR – AI/AR Fashion Try-On App
 ![FitAR Logo](
