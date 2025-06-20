@@ -25,7 +25,7 @@ Digitally transform skilled trades through innovative AR/AI applications that en
 
 ## 📱 Current Application Portfolio
 
-### 🔌 EP-Ai - ElektroPlan AI
+### 🔌 ElektricAR - ElektroPlan AI
 **Status:** 🟢 Active Development | **Target:** Electrical professionals
 
 Revolutionary AR planning tool for electricians combining:
