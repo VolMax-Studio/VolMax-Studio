@@ -40,7 +40,7 @@ Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zi
 
 ---
 
-🚀### Ključne funkcionalnosti
+### 🚀 Ključne funkcionalnosti
 
 🧠 AR elektro planiranje – Postavljanje kablova, utičnica i prekidača direktno kroz kameru
 📏 Precizno pozicioniranje – Merenje razdaljina i visina uz pomoć AR scale sistema
@@ -53,7 +53,7 @@ Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zi
 
 ---
 
-🌐### Tehnologije
+### 🌐 Tehnologije
 
 React Native + Expo – Frontend mobilne aplikacije
 
@@ -67,14 +67,14 @@ Tailwind CSS + ShadCN (planirano) – Admin panel i preglede za web
 
 
 
--👗## FitAR – AI/AR Fashion Try-On App
+## 👗 FitAR – AI/AR Fashion Try-On App
 ![FitAR Logo](
 https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
 **FitAR** je revolucionarna mobilna aplikacija koja koristi **Augmented Reality (AR)** i **AI** za virtuelno isprobavanje odeće pomoću **3D skeniranog modela tela**. Korisnik se skenira jednom, a potom isprobava stotine outfita iz udobnosti svog doma – ili čak direktno u prodavnici pomoću "Live Mode" skeniranja barkoda.
 
 ---
 
-## 🚀 Ključne funkcionalnosti
+### 🚀 Ključne funkcionalnosti
 
 - 📸 **3D Body Scan** – Jedan sken, neograničeno isprobavanje
 - 🧥 **Virtualni garderober** – Čuva sve probane, kupljene i željene outfite
@@ -85,7 +85,7 @@ https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.
 
 ---
 
-## 🌐 Tehnologije
+### 🌐 Tehnologije
 
 - **React Native + Expo** – Frontend aplikacija
 - **Firebase** – Auth, Firestore, Storage
@@ -101,7 +101,7 @@ https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.
 ---
 
 
-## 💼 Development Experience
+### 💼 Development Experience
 
 ### 🏆 VolMax Studio Team
 **Lead Developer & Founder:** Experienced in mobile development, AR/AI integration, and professional industry solutions.
