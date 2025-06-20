@@ -27,7 +27,7 @@ Digitally transform skilled trades through innovative AR/AI applications that en
 
 ### 🔌 ElektricAR - ElektroPlan AI
 **Status:** 🟢 Active Development | **Target:** Electrical professionals
-
+![ElektricAR showcase](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/elektricar.png)
 Revolutionary AR planning tool for electricians combining:
 - **AR Visual Planning** - Point, click, place electrical elements
 - **AI Cost Calculation** - Automatic material and labor estimates  
