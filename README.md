@@ -25,7 +25,7 @@ Digitally transform skilled trades through innovative AR/AI applications that en
 
 ## 📱 Current Application Portfolio
 
-### 🔌 ElektricAR - ElektroPlan AI
+## 🔌 ElektricAR - ElektroPlan AI
 **Status:** 🟢 Active Development | **Target:** Electrical professionals
 ![ElektricAR showcase](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/elektricar.png)
 Revolutionary AR planning tool for electricians combining:
@@ -40,7 +40,7 @@ Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zi
 
 ---
 
-🚀 Ključne funkcionalnosti
+🚀### Ključne funkcionalnosti
 
 🧠 AR elektro planiranje – Postavljanje kablova, utičnica i prekidača direktno kroz kameru
 📏 Precizno pozicioniranje – Merenje razdaljina i visina uz pomoć AR scale sistema
@@ -53,7 +53,7 @@ Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zi
 
 ---
 
-🌐 Tehnologije
+🌐### Tehnologije
 
 React Native + Expo – Frontend mobilne aplikacije
 
@@ -67,7 +67,7 @@ Tailwind CSS + ShadCN (planirano) – Admin panel i preglede za web
 
 
 
--👗 FitAR – AI/AR Fashion Try-On App
+-👗## FitAR – AI/AR Fashion Try-On App
 ![FitAR Logo](
 https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
 **FitAR** je revolucionarna mobilna aplikacija koja koristi **Augmented Reality (AR)** i **AI** za virtuelno isprobavanje odeće pomoću **3D skeniranog modela tela**. Korisnik se skenira jednom, a potom isprobava stotine outfita iz udobnosti svog doma – ili čak direktno u prodavnici pomoću "Live Mode" skeniranja barkoda.
