@@ -36,29 +36,38 @@ Revolutionary AR planning tool for electricians combining:
 - Automated bill of materials
 - Professional project exports
 
----
+-# 👗 FitAR – AI/AR Fashion Try-On App
 
-### 🚿 AR Vodovod  
-**Status:** 🟡 Proof of Concept | **Target:** Plumbing professionals
-
-Next-generation plumbing design platform featuring:
-- AR pipe routing visualization
-- Water pressure simulation
-- Cost optimization algorithms
-- Installation guidance system
+**FitAR** je revolucionarna mobilna aplikacija koja koristi **Augmented Reality (AR)** i **AI** za virtuelno isprobavanje odeće pomoću **3D skeniranog modela tela**. Korisnik se skenira jednom, a potom isprobava stotine outfita iz udobnosti svog doma – ili čak direktno u prodavnici pomoću "Live Mode" skeniranja barkoda.
 
 ---
 
-### 🌐 Quantum Connection
-**Status:** 🔴 Innovation Showcase | **Target:** Social networking
+## 🚀 Ključne funkcionalnosti
 
-Revolutionary approach to human connection:
-- Quantum-inspired matching algorithms
-- AR-enhanced social interactions
-- Privacy-first architecture
-- Meaningful relationship building
+- 📸 **3D Body Scan** – Jedan sken, neograničeno isprobavanje
+- 🧥 **Virtualni garderober** – Čuva sve probane, kupljene i željene outfite
+- 🛍️ **Live Mode** – Skeniraj barkod u prodavnici i odmah vidi kako ti stoji
+- 🤖 **AI preporuke** – Pametan sistem predlaže outfite po stilu, godišnjem dobu i prilikama
+- 💰 **Affiliate engine** – Preusmerava na online kupovinu uz proviziju
+- 📊 **Outfit profili** – Sport, posao, izlasci, spavanje, plaža...
 
 ---
+
+## 🌐 Tehnologije
+
+- **React Native + Expo** – Frontend aplikacija
+- **Firebase** – Auth, Firestore, Storage
+- **Three.js / WebGL** – Renderovanje 3D modela tela
+- **Node.js (planirano)** – Za AI pricing i preporuke
+- **Tailwind CSS / ShadCN (za web prikaz)** – Admin panel i pitch prezentacije
+
+---
+
+
+
+
+---
+
 
 ## 💼 Development Experience
 
