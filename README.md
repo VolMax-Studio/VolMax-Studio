@@ -95,6 +95,12 @@ https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.
 
 ---
 
+## 🚀 Live Demo
+
+🎯 **Isprobaj uživo:**  
+🔗 [https://fit-ar-web.vercel.app](https://fit-ar-web.vercel.app)
+
+> Otvori sa mobilnog uređaja za najbolji AR efekat!
 
 
 
