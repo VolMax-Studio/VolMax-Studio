@@ -266,6 +266,6 @@ VolMax Studio believes in augmenting human expertise with smart tools that make 
 
 **🚀 Building the Future of Professional Craftsmanship**
 
-![VolMax Studio Banner](./assets/volmax_studio_banner.png)
+![VolMax Studio Banner](![showcase](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/baner.png))
 
 </div>
