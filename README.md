@@ -13,7 +13,7 @@
 ![Status](https://img.shields.io/badge/Status-Active_Development-4ecdc4?style=for-the-badge)
 
 ---
-
+![Background showcase](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/background.png)
 ## 🎯 About VolMax Studio
 
 VolMax Studio is a cutting-edge development house specializing in **Augmented Reality (AR)** and **Artificial Intelligence (AI)** solutions for professional industries. We bridge the gap between traditional craftsmanship and modern technology.
