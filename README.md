@@ -4,6 +4,7 @@
 **Revolutionary AR/AI Applications for Professional Industries**
 ## 🌐 Zvanična Web Stranica
 🔗 [vol-max-studio.vercel.app](https://volmax-studio-website.vercel.app/)
+
 🔗 [vol-max-studio.vercel.app](https://vol-max-studio.vercel.app)
 
 > Transforming traditional craftsmanship through cutting-edge technology
@@ -106,7 +107,7 @@ https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.
 
 > Otvori sa mobilnog uređaja za najbolji AR efekat!
 
-
+##[https://fit-ar-github](https://github.com/VolMax-Studio/FitAR)##
 
 ---
 
