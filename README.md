@@ -26,6 +26,7 @@ Digitally transform skilled trades through innovative AR/AI applications that en
 ## 📱 Current Application Portfolio
 
 ## 🔌 ElektricAR - ElektroPlan AI
+
 **Status:** 🟢 Active Development | **Target:** Electrical professionals
 ![ElektricAR showcase](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/elektricar.png)
 Revolutionary AR planning tool for electricians combining:
@@ -37,8 +38,11 @@ Revolutionary AR planning tool for electricians combining:
 je inovativna mobilna aplikacija koja koristi Augmented Reality (AR) i AI kako bi električarima omogućila precizno planiranje, vizuelizaciju i instalaciju električnih sistema direktno na gradilištu ili u objektu.
 Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zidove — pre nego što uopšte započne fizički rad.
 
+## 🚀 Live Demo
 
----
+🎯 **Isprobaj uživo:**  
+🔗 [https://fit-ar-web.vercel.app](https://build-ten-bice.vercel.app/)
+ 
 
 ### 🚀 Ključne funkcionalnosti
 
