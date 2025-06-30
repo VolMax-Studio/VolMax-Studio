@@ -41,7 +41,7 @@ Pomoću AR kamere korisnik postavlja prekidače, razvodne kutije i kablove na zi
 ## 🚀 Live Demo
 
 🎯 **Isprobaj uživo:**  
-🔗 [https://fit-ar-web.vercel.app](https://build-ten-bice.vercel.app/)
+🔗 [https://elektric-ar-web.vercel.app](https://build-ten-bice.vercel.app/)
  
 
 ### 🚀 Ključne funkcionalnosti
