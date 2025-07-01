@@ -74,12 +74,10 @@ Tailwind CSS + ShadCN (planirano) – Admin panel i preglede za web
 
 ## 👗 FitAR – AI/AR Fashion Try-On App 
 ### **README UPDATE:** 01.07.2025
-```markdown
 # 🚫 PROJECT STATUS: CANCELED
 
-## Reason: Google Labs released identical concept 
-
-![FitAR Logo](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
+## Reason: Google Labs released identical concept
+![FitAR showcase](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
 
 **FitAR** je revolucionarna mobilna aplikacija koja koristi **Augmented Reality (AR)** i **AI** za virtuelno isprobavanje odeće pomoću **3D skeniranog modela tela**. Korisnik se skenira jednom, a potom isprobava stotine outfita iz udobnosti svog doma – ili čak direktno u prodavnici pomoću "Live Mode" skeniranja barkoda.
 
