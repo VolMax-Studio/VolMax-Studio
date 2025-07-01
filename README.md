@@ -79,7 +79,7 @@ Tailwind CSS + ShadCN (planirano) – Admin panel i preglede za web
 
 ## Reason: Google Labs released identical concept 
 
-[FitAR Logo](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
+![FitAR Logo](https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.png)
 
 **FitAR** je revolucionarna mobilna aplikacija koja koristi **Augmented Reality (AR)** i **AI** za virtuelno isprobavanje odeće pomoću **3D skeniranog modela tela**. Korisnik se skenira jednom, a potom isprobava stotine outfita iz udobnosti svog doma – ili čak direktno u prodavnici pomoću "Live Mode" skeniranja barkoda.
 
