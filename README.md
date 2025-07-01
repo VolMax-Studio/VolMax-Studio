@@ -101,7 +101,7 @@ https://raw.githubusercontent.com/VolMax-Studio/VolMax-Studio/main/images/fitar.
 ---
 
 ## 🚀 Live Demo
-
+🔗 [https://fit-ar](https://fit-ar-web-dashboard.vercel.app/)
 🎯 **Isprobaj uživo:**  
 🔗 [https://fit-ar-web.vercel.app](https://fit-ar-web.vercel.app)
 
