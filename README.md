@@ -3,7 +3,7 @@
 
 **Revolutionary AR/AI Applications for Professional Industries**
 ## 🌐 Zvanična Web Stranica
-🔗 [volmax-studio.rs](https://volmax-studio-website.vercel.app/)
+🔗 [volmax-studio.rs](https://volmax-studio.rs)
 
 🔗 [vol-max-studio.vercel.app](https://vol-max-studio.vercel.app)
 
