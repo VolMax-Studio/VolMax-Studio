@@ -77,6 +77,16 @@ Analysis of continental European (CE) synchronous area grid frequency dynamics. 
 
 ---
 
+### [PV_Anomaly_Detection](https://github.com/VolMax-Studio/PV_Anomaly_Detection)
+PV system performance monitoring and anomaly detection pipeline using NREL TMY3 data combined with a high-fidelity physical CEC module model.
+- **Anomaly Detection**: identifies soiling, shading, degradation (PID), and inverter failures via Isolation Forests on temperature-corrected Performance Ratio (PR) indicators.
+- **MPPT Transients**: simulates cloud shadow ramps (100–500 W/m²/s) and models a 10 Hz Perturb & Observe (P&O) MPPT tracker to calculate dynamic tracking efficiency.
+- **Physics Engine**: models logarithmic $V_{mpp} \propto \ln(G/G_{stc})$ corrections to verify why slow cirrus cloud transitions cause larger cumulative energy losses than rapid cumulus edges. Fully verified with 26 unit tests.
+
+**Stack:** Python · pvlib · scikit-learn · numpy · scipy · pandas · matplotlib · pytest
+
+---
+
 ## What's Coming
 
 **Edge ML for Embedded** — Embedded signal processing implementations targeting microcontrollers (STM32G4 series). Hardware-validated latency measurements, deterministic execution, no cloud dependency.
