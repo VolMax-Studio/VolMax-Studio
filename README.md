@@ -57,6 +57,16 @@ Includes 50 Hz fundamental attenuation to prevent spectral leakage masking sideb
 
 ---
 
+### [CWRU_Bearing_Diagnostics](https://github.com/VolMax-Studio/CWRU_Bearing_Diagnostics)
+Fault diagnostics pipeline using the Case Western Reserve University (CWRU) bearing dataset. Implements Squared Envelope Spectrum (SES) analysis to isolate outer race, inner race, and ball defects under varying load levels (0HP–3HP).
+- **Signal Processing**: bandpass filtering, Hilbert transform demodulation, and Welch PSD.
+- **Robustness**: includes a physical CWRU-compatible simulator for offline/CI test suites (17/17 tests passing).
+- **Diagnostics**: extracts defect characteristic frequencies (BPFO, BPFI, BSF, FTF) under load-modulated slip/RPM.
+
+**Stack:** Python · numpy · scipy · matplotlib · pytest
+
+---
+
 ## What's Coming
 
 **Edge ML for Embedded** — Embedded signal processing implementations targeting microcontrollers (STM32G4 series). Hardware-validated latency measurements, deterministic execution, no cloud dependency.
