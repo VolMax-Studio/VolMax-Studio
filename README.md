@@ -32,13 +32,21 @@ EOL threshold and split strategy (by battery, not by row) documented and defende
 
 **Stack:** Python · scikit-learn · scipy.io · matplotlib
 
+### [Power_Signal_Tools_Portfolio](https://github.com/VolMax-Studio/Power_Signal_Tools_Portfolio)
+Domain-grounded, production-grade Python package for power and signal analysis. Features: windowed RMS, THD-F/THD-R (with Hann windowing and coherent gain correction), physical-scaled FFT, custom Mallat filterbank DWT (Haar & db4) for transient localization, rolling Z-score anomaly detection, and Hilbert amplitude envelope sag/swell analysis. Fully verified with 39 analytical unit tests.
+
+**Stack:** Python · numpy · scipy · pandas · pytest
+
+---
+
+### [Fluid_Leakage_Detection_Portfolio](https://github.com/VolMax-Studio/Fluid_Leakage_Detection_Portfolio)
+Transient leak detection and isolation pipeline on water distribution networks modeled after the BattLeDIM international benchmark. Integrates baseline pressure prediction (Random Forest), leak localization via hydraulic sensitivity matrices (mapping pressure drops to network nodes), and transient wave onset detection using Discrete Wavelet Transforms (DWT).
+
+**Stack:** Python · scikit-learn · numpy · scipy · pandas · pytest
+
 ---
 
 ## What's Coming
-
-**Signal Processing Toolkit** — Clean, documented Python utilities for power and signal analysis: RMS, THD, wavelet decomposition, FFT, transient detection, frequency-domain anomaly scoring. Tools other engineers can actually use, not a demo.
-
-**Fluid Flow Anomaly Detection** — Non-invasive flow monitoring from pipe acoustic/vibration signatures. Same principle as NILM applied to fluid systems: disaggregate flow events from a single sensor. Target datasets: open ultrasonic or differential pressure logs. Relevant to water utilities, industrial process monitoring.
 
 **Edge ML for Embedded** — Embedded signal processing implementations targeting microcontrollers (STM32G4 series). Hardware-validated latency measurements, deterministic execution, no cloud dependency.
 
