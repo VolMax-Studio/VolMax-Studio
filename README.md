@@ -67,6 +67,16 @@ Fault diagnostics pipeline using the Case Western Reserve University (CWRU) bear
 
 ---
 
+### [Grid_Frequency_Analysis](https://github.com/VolMax-Studio/Grid_Frequency_Analysis)
+Analysis of continental European (CE) synchronous area grid frequency dynamics. Implements a physics-based power system Swing Equation simulator and EN 50160 compliance evaluator.
+- **Dynamics**: models system inertia $H$, governor response, load damping, and stochastic load variations.
+- **Analysis**: computes Rate of Change of Frequency (ROCOF) using a sliding 0.2s window (IEC 60255-181) and tracks frequency nadir/settling values.
+- **Robustness**: loads and parses real ENTSO-E historical measurements with synthetic fallback for offline CI runs. Fully verified with 14 unit tests.
+
+**Stack:** Python · numpy · scipy · pandas · matplotlib · pytest
+
+---
+
 ## What's Coming
 
 **Edge ML for Embedded** — Embedded signal processing implementations targeting microcontrollers (STM32G4 series). Hardware-validated latency measurements, deterministic execution, no cloud dependency.
