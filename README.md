@@ -46,6 +46,17 @@ Transient leak detection and isolation pipeline on water distribution networks m
 
 ---
 
+### [MCSA_Fault_Diagnostics_Portfolio](https://github.com/VolMax-Studio/MCSA_Fault_Diagnostics_Portfolio)
+Motor Current Signature Analysis (MCSA) diagnostics for 3-phase induction motor faults:
+- **Broken Rotor Bars (BRBs)** — detecting sidebands at $f_0 (1 \pm 2s)$ with measured -45.4 dBc (vs -45 dBc injected).
+- **Bearing Faults** — modulating BPFO sidebands, measured at -50.0 dBc (vs -50 dBc injected).
+- **Stator Short Circuits** — positive/negative sequence unbalance ratio ($I_2/I_1$) and 3rd/5th harmonics analysis (measured -29.6 dBc on 3rd harmonic).
+Includes 50 Hz fundamental attenuation to prevent spectral leakage masking sidebands. Fully verified with 12 unit tests.
+
+**Stack:** Python · numpy · scipy · scikit-learn · pytest
+
+---
+
 ## What's Coming
 
 **Edge ML for Embedded** — Embedded signal processing implementations targeting microcontrollers (STM32G4 series). Hardware-validated latency measurements, deterministic execution, no cloud dependency.
