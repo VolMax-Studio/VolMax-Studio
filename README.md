@@ -78,6 +78,13 @@ Transformer health assessment: IEC 60076-7 thermal model (top-oil + hot-spot), A
 
 ---
 
+### [VPP_Frequency_Regulation](https://github.com/VolMax-Studio/VPP_Frequency_Regulation)
+Virtual Power Plant (VPP) active frequency regulation simulation on a regional grid: FCR (Primary) and aFRR (Secondary AGC) control loops, battery storage (BESS), solar PV clipping, and flexible loads dispatch. Closed-loop swing equation dynamics. 21/21 tests.
+
+**Stack:** Python · SciPy · NumPy
+
+---
+
 ## Background
 
 20+ years in electrical work — residential, industrial, telecom — across Serbia and Western Europe. Self-directed R&D in edge AI, power electronics control, and embedded signal processing. Company: VolMax Studio Lab d.o.o., Titel, Serbia.
