@@ -2,102 +2,87 @@
 
 **Power electronics engineer + energy ML.**
 
-Domain-grounded open tools for grid monitoring, load disaggregation, battery diagnostics, and embedded signal processing. The edge: real electrical domain knowledge combined with the ability to code — a combination that's rare enough to matter.
+Domain-grounded open tools for grid monitoring, load disaggregation, battery diagnostics, motor fault detection, and embedded signal processing. The edge: real electrical domain knowledge combined with the ability to code — a combination that's rare enough to matter.
 
 ---
 
 ## Active Portfolio
 
 ### [PowerQuality_Classifier_Portfolio](https://github.com/VolMax-Studio/PowerQuality_Classifier_Portfolio)
-17-class power quality disturbance classifier trained on IEEE-1159 parametric data. Random Forest + feature engineering on RMS, THD, spectral components. Honest results: ~78% accuracy with full confusion matrix, per-class breakdown, and Streamlit dashboard. No synthetic inflation.
+17-class power quality disturbance classifier on IEEE-1159 parametric data. Random Forest + spectral feature engineering. Honest results: ~78% accuracy with full confusion matrix and Streamlit dashboard.
 
-**Stack:** Python · scikit-learn · Streamlit · NumPy · SciPy
+**Stack:** Python · scikit-learn · Streamlit
 
 ---
 
 ### [NILM_Disaggregation_Portfolio](https://github.com/VolMax-Studio/NILM_Disaggregation_Portfolio)
-Energy disaggregation pipeline on real REDD data (Kolter & Johnson, 2011) — House 3, ~3 days of low-frequency smart meter measurements. Random Forest regressor with physics-informed features for refrigerator load separation from aggregate mains. Domain-aware: models standby baseline and compressor cycling separately.
+Energy disaggregation on real REDD data (Kolter & Johnson 2011) — House 3, ~3 days of smart meter measurements. Random Forest with physics-informed features for load separation from aggregate mains.
 
-**Stack:** Python · scikit-learn · pandas · matplotlib
+**Stack:** Python · scikit-learn · pandas
 
 ---
 
 ### [Battery_Health_Portfolio](https://github.com/VolMax-Studio/Battery_Health_Portfolio)
-Three-task diagnostics pipeline on NASA PCoE Li-ion battery data (B0005–B0018):
-- **SoH regression** — R² = 0.943, MAE = 0.043 Ah (cross-battery: train B0005, test B0006)
-- **RUL prediction** — RMSE = 5.7 cycles to EOL (threshold: 1.4 Ah)
-- **Thermal anomaly detection** — Isolation Forest, F1 = 0.842 on injected fault cycles
+Three-task diagnostics on real NASA PCoE Li-ion data (B0005–B0018): SoH regression (R²=0.943, cross-battery), RUL prediction (RMSE=5.7 cycles), thermal anomaly detection (F1=0.842).
 
-EOL threshold and split strategy (by battery, not by row) documented and defended.
+**Stack:** Python · scikit-learn · scipy.io
 
-**Stack:** Python · scikit-learn · scipy.io · matplotlib
+---
 
-### [Power_Signal_Tools_Portfolio](https://github.com/VolMax-Studio/Power_Signal_Tools_Portfolio)
-Domain-grounded, production-grade Python package for power and signal analysis. Features: windowed RMS, THD-F/THD-R (with Hann windowing and coherent gain correction), physical-scaled FFT, custom Mallat filterbank DWT (Haar & db4) for transient localization, rolling Z-score anomaly detection, and Hilbert amplitude envelope sag/swell analysis. Fully verified with 39 analytical unit tests.
+### [power_signal_tools](https://github.com/VolMax-Studio/power_signal_tools)
+Importable Python library: windowed RMS, THD-F/R via FFT, DWT transient detection, Hilbert envelope for sag/swell, rolling z-score. 39/39 analytically verified tests.
 
-**Stack:** Python · numpy · scipy · pandas · pytest
+**Stack:** Python · NumPy · SciPy · PyWavelets
 
 ---
 
 ### [Fluid_Leakage_Detection_Portfolio](https://github.com/VolMax-Studio/Fluid_Leakage_Detection_Portfolio)
-Transient leak detection and isolation pipeline on water distribution networks modeled after the BattLeDIM international benchmark. Integrates baseline pressure prediction (Random Forest), leak localization via hydraulic sensitivity matrices (mapping pressure drops to network nodes), and transient wave onset detection using Discrete Wavelet Transforms (DWT).
+Non-intrusive leak detection in water distribution networks — same NILM principle applied to hydraulic systems. DWT burst detection + RF baseline residual alarm + sensitivity matrix localization.
 
-**Stack:** Python · scikit-learn · numpy · scipy · pandas · pytest
+**Stack:** Python · scikit-learn · SciPy
 
 ---
 
 ### [MCSA_Fault_Diagnostics_Portfolio](https://github.com/VolMax-Studio/MCSA_Fault_Diagnostics_Portfolio)
-Motor Current Signature Analysis (MCSA) diagnostics for 3-phase induction motor faults:
-- **Broken Rotor Bars (BRBs)** — detecting sidebands at $f_0 (1 \pm 2s)$ with measured -45.4 dBc (vs -45 dBc injected).
-- **Bearing Faults** — modulating BPFO sidebands, measured at -50.0 dBc (vs -50 dBc injected).
-- **Stator Short Circuits** — positive/negative sequence unbalance ratio ($I_2/I_1$) and 3rd/5th harmonics analysis (measured -29.6 dBc on 3rd harmonic).
-Includes 50 Hz fundamental attenuation to prevent spectral leakage masking sidebands. Fully verified with 12 unit tests.
+Motor Current Signature Analysis: broken rotor bar, bearing outer-race, stator inter-turn short circuit — all from stator current alone. Welch PSD with Kaiser window, Fortescue sequence analysis. 12/12 tests.
 
-**Stack:** Python · numpy · scipy · scikit-learn · pytest
+**Stack:** Python · NumPy · SciPy
 
 ---
 
 ### [CWRU_Bearing_Diagnostics](https://github.com/VolMax-Studio/CWRU_Bearing_Diagnostics)
-Fault diagnostics pipeline using the Case Western Reserve University (CWRU) bearing dataset. Implements Squared Envelope Spectrum (SES) analysis to isolate outer race, inner race, and ball defects under varying load levels (0HP–3HP).
-- **Signal Processing**: bandpass filtering, Hilbert transform demodulation, and Welch PSD.
-- **Robustness**: includes a physical CWRU-compatible simulator for offline/CI test suites (17/17 tests passing).
-- **Diagnostics**: extracts defect characteristic frequencies (BPFO, BPFI, BSF, FTF) under load-modulated slip/RPM.
+Envelope analysis on real CWRU lab bearing data (SKF 6205-2RS, NASA-collected). Hilbert envelope → Squared Envelope Spectrum → fault frequency detection (BPFO, BPFI, BSF, FTF). 17/17 tests. Real data fallback to CWRU-compatible synthetic.
 
-**Stack:** Python · numpy · scipy · matplotlib · pytest
+**Stack:** Python · SciPy · NumPy
 
 ---
 
 ### [Grid_Frequency_Analysis](https://github.com/VolMax-Studio/Grid_Frequency_Analysis)
-Analysis of continental European (CE) synchronous area grid frequency dynamics. Implements a physics-based power system Swing Equation simulator and EN 50160 compliance evaluator.
-- **Dynamics**: models system inertia $H$, governor response, load damping, and stochastic load variations.
-- **Analysis**: computes Rate of Change of Frequency (ROCOF) using a sliding 0.2s window (IEC 60255-181) and tracks frequency nadir/settling values.
-- **Robustness**: loads and parses real ENTSO-E historical measurements with synthetic fallback for offline CI runs. Fully verified with 14 unit tests.
+Continental European grid frequency dynamics: swing equation model (H=6s, IEC parameters), ROCOF calculation, EN 50160 compliance checking, disturbance event detection. 14/14 tests. Accepts real ENTSO-E CSV data.
 
-**Stack:** Python · numpy · scipy · pandas · matplotlib · pytest
+**Stack:** Python · SciPy · NumPy
 
 ---
 
 ### [PV_Anomaly_Detection](https://github.com/VolMax-Studio/PV_Anomaly_Detection)
-PV system performance monitoring and anomaly detection pipeline using NREL TMY3 data combined with a high-fidelity physical CEC module model.
-- **Anomaly Detection**: identifies soiling, shading, degradation (PID), and inverter failures via Isolation Forests on temperature-corrected Performance Ratio (PR) indicators.
-- **MPPT Transients**: simulates cloud shadow ramps (100–500 W/m²/s) and models a 10 Hz Perturb & Observe (P&O) MPPT tracker to calculate dynamic tracking efficiency.
-- **Physics Engine**: models logarithmic $V_{mpp} \propto \ln(G/G_{stc})$ corrections to verify why slow cirrus cloud transitions cause larger cumulative energy losses than rapid cumulus edges. Fully verified with 26 unit tests.
+PV system anomaly detection on real NREL TMY3 meteorological data + real CEC module parameters (Canadian Solar CS5P-250M). Isolation Forest detection: Precision 0.985, Recall 0.565. Includes P&O MPPT cloud transient simulation at 10 Hz.
 
-**Stack:** Python · pvlib · scikit-learn · numpy · scipy · pandas · matplotlib · pytest
+**Stack:** Python · pvlib · scikit-learn · NumPy
 
 ---
 
-## What's Coming
+### [Transformer_Health_Portfolio](https://github.com/VolMax-Studio/Transformer_Health_Portfolio)
+Transformer health assessment: IEC 60076-7 thermal model (top-oil + hot-spot), Arrhenius insulation aging, IEC 60599 DGA interpretation with Duval triangle + Rogers ratios. 40 MVA ONAN substation transformer. 27/27 tests.
 
-**Edge ML for Embedded** — Embedded signal processing implementations targeting microcontrollers (STM32G4 series). Hardware-validated latency measurements, deterministic execution, no cloud dependency.
+**Stack:** Python · SciPy · NumPy
 
 ---
 
 ## Background
 
-7+ years in electrical work — residential, industrial, telecom — across Serbia and Western Europe. Self-directed R&D in edge AI, power electronics control, and neuromorphic signal processing. Currently: power electronics engineer and R&D developer at BPM FiberNetworks.
+20+ years in electrical work — residential, industrial, telecom — across Serbia and Western Europe. Self-directed R&D in edge AI, power electronics control, and embedded signal processing. Company: VolMax Studio Lab d.o.o., Titel, Serbia.
 
-The open portfolio is a direct extension of domain work, not a career pivot. The problems being solved here are problems from the field.
+The open portfolio is a direct extension of field work. The problems being solved here are problems encountered in real electrical infrastructure.
 
 ---
 
@@ -105,5 +90,7 @@ The open portfolio is a direct extension of domain work, not a career pivot. The
 
 **Email:** volmax.core@gmail.com  
 **Location:** Novi Sad / Titel, Serbia  
+**Website:** volmax-studio.rs
 
 Open to: energy ML roles · embedded systems engineering · technical collaborations · contract work in power quality and grid monitoring.
+
