@@ -23,7 +23,7 @@ Energy disaggregation on real REDD data (Kolter & Johnson 2011) — House 3, ~3 
 ---
 
 ### [Battery_Health_Portfolio](https://github.com/VolMax-Studio/Battery_Health_Portfolio)
-Three-task diagnostics on real NASA PCoE Li-ion data (B0005–B0018): SoH regression (R²=0.943, cross-battery), RUL prediction (RMSE=5.7 cycles), thermal anomaly detection (F1=0.842).
+Predictability-horizon study on real NASA PCoE Li-ion cells (B0005/06/18; B0007 censored and excluded — never reaches EOL). Three measured findings, none assumed: a single cell hides its own end-of-life (B0005 mispredicted +157 cycles from a 50-cycle window), the textbook leading indicator Rct does not lead (late-life MAE 0.333→0.332 Ah — no gain), and the population reveals what the cell hides (cross-cell leave-one-out ~10–16 cycle EOL error). Predictability is population-level, not individual. DOI 10.5281/zenodo.20752869.
 
 **Stack:** Python · scikit-learn · scipy.io
 
@@ -51,7 +51,7 @@ Motor Current Signature Analysis: broken rotor bar, bearing outer-race, stator i
 ---
 
 ### [CWRU_Bearing_Diagnostics](https://github.com/VolMax-Studio/CWRU_Bearing_Diagnostics)
-Envelope analysis on real CWRU lab bearing data (SKF 6205-2RS, NASA-collected). Hilbert envelope → Squared Envelope Spectrum → fault frequency detection (BPFO, BPFI, BSF, FTF). 17/17 tests. Real data fallback to CWRU-compatible synthetic.
+Incipient bearing-fault diagnostics on real Case Western Reserve University (CWRU) data (SKF 6205-2RS, 12 kHz drive-end, 0 HP, 0.007″ EDM faults). Bandpass-filtered Hilbert envelope → Squared Envelope Spectrum. On real measurements every fault frequency localizes within ~2% of theory (BPFO 108.0 vs 107.4 Hz, BPFI 162.0 vs 162.2 Hz, BSF 72.0 vs 70.6 Hz). The detection difficulty lives in time-domain impulsiveness: filtered kurtosis falls from outer-race 4.75 (sharp stationary defect) through inner-race 2.63 (load-zone modulated) to ball 0.0 (non-impulsive — the impulse train is smeared by rolling-element slip), quantifying why rolling-element faults are the hard case for envelope methods. Healthy baseline shows no fault peak (kurtosis −1.05). 17/17 tests.
 
 **Stack:** Python · SciPy · NumPy
 
@@ -65,9 +65,9 @@ Continental European grid frequency dynamics: swing equation model (H=6s, IEC pa
 ---
 
 ### [PV_Anomaly_Detection](https://github.com/VolMax-Studio/PV_Anomaly_Detection)
-PV system anomaly detection on real NREL TMY3 meteorological data + real CEC module parameters (Canadian Solar CS5P-250M). Isolation Forest detection: Precision 0.985, Recall 0.565. Includes P&O MPPT cloud transient simulation at 10 Hz.
+Controlled anomaly-detection benchmark on real NREL TMY3 meteorological data (ASOS 723170, Greensboro NC — 8760h measured) and real CEC module parameters (Canadian Solar CS5P-250M), modelled via pvlib single-diode physics (de Soto 2006). Synthetic faults (soiling, shading, PID, inverter) are injected as ground-truth; Isolation Forest scores Precision 0.985 / Recall 0.565 against the injected labels — a low-false-alarm, conservative-recall regime: reliable on clear anomalies, misses subtler ones. 26 passing tests.
 
-**Stack:** Python · pvlib · scikit-learn · NumPy
+**Stack:** Python · pvlib · scikit-learn
 
 ---
 
