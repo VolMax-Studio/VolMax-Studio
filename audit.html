@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery ML Audit — Independent SOH & RUL Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #060606;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #111827);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #f093fb;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            max-width: 750px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Highlight box */
+        .problem-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-box h2 {
+            font-size: 1.8rem;
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .problem-box p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 15px;
+        }
+
+        /* Seven Checks Grid */
+        .checks-section {
+            margin-bottom: 80px;
+        }
+
+        .checks-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .checks-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .check-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .check-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(240, 147, 251, 0.3);
+        }
+
+        .check-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #f093fb;
+            line-height: 1;
+            background: rgba(240, 147, 251, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .check-content h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .check-content p {
+            color: #9ca3af;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .check-output {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #f093fb;
+            border-left: 3px solid #f093fb;
+        }
+
+        /* Verdicts */
+        .verdicts-section {
+            margin-bottom: 80px;
+        }
+
+        .verdicts-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .verdicts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .verdict-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .verdict-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verdict-supported {
+            color: #2ec4b6;
+        }
+        .verdict-card.supported {
+            border-top: 4px solid #2ec4b6;
+        }
+
+        .verdict-artifact {
+            color: #e67e22;
+        }
+        .verdict-card.artifact {
+            border-top: 4px solid #e67e22;
+        }
+
+        .verdict-unfalsifiable {
+            color: #9b59b6;
+        }
+        .verdict-card.unfalsifiable {
+            border-top: 4px solid #9b59b6;
+        }
+
+        .verdict-card p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        /* Guarantees Box */
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .guarantees-box {
+            background: rgba(46, 196, 182, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(46, 196, 182, 0.15);
+        }
+
+        .guarantees-box h2 {
+            font-size: 1.8rem;
+            color: #2ec4b6;
+            margin-bottom: 25px;
+        }
+
+        .no-guarantees-box {
+            background: rgba(245, 87, 108, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(245, 87, 108, 0.15);
+        }
+
+        .no-guarantees-box h2 {
+            font-size: 1.8rem;
+            color: #f5576c;
+            margin-bottom: 25px;
+        }
+
+        .guarantees-list {
+            list-style: none;
+        }
+
+        .guarantees-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            color: #d1d5db;
+        }
+
+        .guarantees-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ec4b6;
+            font-weight: bold;
+        }
+
+        .no-guarantees-list li::before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            color: #f5576c;
+            font-weight: bold;
+        }
+
+        /* Credentials Section */
+        .credentials-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 80px;
+        }
+
+        .credentials-section h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .credentials-section p {
+            color: #d1d5db;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .credential-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .credential-link-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .credential-link-item:hover {
+            border-color: #f093fb;
+            background: rgba(240, 147, 251, 0.05);
+        }
+
+        .credential-link-text h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .credential-link-text p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .doi-badge {
+            background: rgba(240, 147, 251, 0.1);
+            color: #f093fb;
+            border: 1px solid rgba(240, 147, 251, 0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Audience Box */
+        .audience-box {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 80px;
+        }
+
+        .audience-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #f093fb;
+        }
+
+        .audience-box p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer / Contact */
+        footer {
+            padding: 80px 20px 50px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .btn-cta {
+            padding: 20px 40px;
+            font-size: 1.25rem;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(240, 147, 251, 0.5);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .check-card {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .guarantees-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">VolMax Studio</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="audit.html" style="color: #f093fb;">Battery ML Audit</a></li>
+                <li><a href="index.html#projects">AR Portfolio</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>Battery ML Audit</h1>
+            <p>Independent verification of battery SOH/RUL models. I don't build your model — I audit it against held-out data and physical law, with every number regenerating from a script you keep.</p>
+        </header>
+
+        <section class="problem-box">
+            <h2>The Problem This Solves</h2>
+            <p>The party that builds a battery SOH/RUL model usually also reports its accuracy. That is a structural conflict of interest — and it is why "98% accuracy" claims so often collapse on a cell the model has never seen. You have to trust a vendor's number, but you have no neutral way to check it.</p>
+            <p>This audit is the neutral check. I did not build your model, I am not selling you a competing one, and I have no incentive to flatter the result. The only product is an honest verdict on whether the claim survives contact with data it has never seen.</p>
+        </section>
+
+        <section class="checks-section">
+            <h2>What I Check — Seven Things, Each with a Concrete Output</h2>
+            <div class="checks-grid">
+                
+                <div class="check-card">
+                    <div class="check-number">1</div>
+                    <div class="check-content">
+                        <h3>Split Integrity</h3>
+                        <p>Was the model validated cell-wise, or did consecutive cycles from one cell leak across train and test? Cycle-wise splits inflate accuracy because the model recognizes the cell instead of predicting.</p>
+                        <span class="check-output">→ Output: Leakage present (yes/no) + corrected accuracy under a group-aware split</span>
+                    </div>
+                </div>
+
+                <div class="check-card">
+                    <div class="check-number">2</div>
+                    <div class="check-content">
+                        <h3>Preprocessing-Leakage Trace</h3>
+                        <p>Was any scaler or normalization fit on the full dataset before the split, leaking test-cell statistics upstream into training?</p>
+                        <span class="check-output">→ Output: Every point where a learned transform crosses the split boundary</span>
+                    </div>
+                </div>
+
+                <div class="check-card">
+                    <div class="check-number">3</div>
+                    <div class="check-content">
+                        <h3>Metric Honesty</h3>
+                        <p>Is the reported error the full-set error, or was a hard cell quietly dropped to match a benchmark?</p>
+                        <span class="check-output">→ Output: Full-set error vs. reported error, with any excluded cells named</span>
+                    </div>
+                </div>
+
+                <div class="check-card">
+                    <div class="check-number">4</div>
+                    <div class="check-content">
+                        <h3>Physical Consistency</h3>
+                        <p>Does the model respect physics — monotonic aging, no impossible capacity "recovery", internal resistance within real bounds — or does it quietly violate conservation?</p>
+                        <span class="check-output">→ Output: List of physical-law violations, if any</span>
+                    </div>
+                </div>
+
+                <div class="check-card">
+                    <div class="check-number">5</div>
+                    <div class="check-content">
+                        <h3>Concurrence vs. Prediction</h3>
+                        <p>Does a claimed "predictor" actually forecast degradation early enough to act on, or does it only track degradation that is already happening?</p>
+                        <span class="check-output">→ Output: Whether the feature is genuinely predictive or merely concurrent</span>
+                    </div>
+                </div>
+
+                <div class="check-card">
+                    <div class="check-number">6</div>
+                    <div class="check-content">
+                        <h3>Uncertainty Quantification</h3>
+                        <p>Does the model know how much it doesn't know — calibrated confidence intervals — or does it deliver a single bare number that hides its own error?</p>
+                        <span class="check-output">→ Output: Whether uncertainty is present, and whether it is actually calibrated</span>
+                    </div>
+                </div>
+
+                <div class="check-card">
+                    <div class="check-number">7</div>
+                    <div class="check-content">
+                        <h3>Reproducibility Package</h3>
+                        <p>Every number I report regenerates from a single script I hand you. If I can't regenerate it, I don't claim it.</p>
+                        <span class="check-output">→ Output: The regeneration path — you can re-run the entire audit yourself</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="verdicts-section">
+            <h2>The Verdict</h2>
+            <div class="verdicts-grid">
+                
+                <div class="verdict-card supported">
+                    <div class="verdict-title verdict-supported">Supported</div>
+                    <p>Survives held-out data and physical law; the number is the honest number.</p>
+                </div>
+
+                <div class="verdict-card artifact">
+                    <div class="verdict-title verdict-artifact">Artifact</div>
+                    <p>The effect is leakage, inflation, or curation; the corrected number differs, and I show by how much and why.</p>
+                </div>
+
+                <div class="verdict-card unfalsifiable">
+                    <div class="verdict-title verdict-unfalsifiable">Unfalsifiable</div>
+                    <p>The claim cannot be tested as written; I specify what would make it testable.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="guarantees-grid">
+            <div class="guarantees-box">
+                <h2>What I Guarantee</h2>
+                <ul class="guarantees-list">
+                    <li>Every number in the report regenerates from source. No hand-copied metrics.</li>
+                    <li>I state the method, the split, and the limitations of my own analysis.</li>
+                    <li>I report negative results plainly. If your model is sound, I say so. If the gap is in my own check, I say that too.</li>
+                </ul>
+            </div>
+
+            <div class="no-guarantees-box">
+                <h2>What I Deliberately Do Not</h2>
+                <ul class="guarantees-list no-guarantees-list">
+                    <li>An accuracy number. I am not selling a model, so I make no "95%" promise — that is the vendor claim this audit exists to test.</li>
+                    <li>That your model will pass. The value is the honest verdict, not a flattering one.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="credentials-section">
+            <h2>The Credential</h2>
+            <p>I hold my own work to the standard I sell. The public, DOI-archived portfolio is itself a worked example of every check above — applied to my own analyses first, catching my own errors before anyone else could:</p>
+            
+            <div class="credential-links">
+                
+                <a href="https://github.com/VolMax-Studio/ekf-dynamic-sampling-audit" target="_blank" class="credential-link-item">
+                    <div class="credential-link-text">
+                        <h4>EKF Dynamic Sampling Audit</h4>
+                        <p>Reproduced a 99.65% sample-reduction claim, confirmed it on quasi-static profile, and showed it does not transfer to dynamic load (24.84% SOC error).</p>
+                    </div>
+                    <span class="doi-badge">DOI 10.5281/zenodo.21009974</span>
+                </a>
+
+                <a href="https://github.com/VolMax-Studio/VolMax_HALO_Optimizer" target="_blank" class="credential-link-item">
+                    <div class="credential-link-text">
+                        <h4>VolMax HALO Optimizer</h4>
+                        <p>Gradient-free local adaptation of frozen INT4 networks with O(1)-in-depth memory scaling and rigorous boundary failure analysis.</p>
+                    </div>
+                    <span class="doi-badge">DOI 10.5281/zenodo.21010289</span>
+                </a>
+
+                <a href="https://github.com/VolMax-Studio/iot2/tree/main/PORTFOLIO/Battery_Health_Portfolio" target="_blank" class="credential-link-item">
+                    <div class="credential-link-text">
+                        <h4>Battery Health Portfolio</h4>
+                        <p>Li-ion battery prognostic predictability boundaries, impedance observability study and early predictions on NASA PCoE dataset.</p>
+                    </div>
+                    <span class="doi-badge">DOI 10.5281/zenodo.20752869</span>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="audience-box">
+            <h2>Who This Is For</h2>
+            <p>BESS operators, second-life firms, battery startups, and BESS investors / independent engineers who must trust a vendor's SOH/RUL number but have no neutral party to check it. The EU Battery Regulation's digital battery passport (mandatory 2027) is creating a wave of SOH documentation that will need exactly this kind of independent check.</p>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h2 style="margin-bottom: 20px; color: #f093fb;">Ready for a Neutral Check?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.8; max-width: 600px; margin: 0 auto 40px;">
+                Physics doesn't lie. Sensors don't lie. The audit stands at the gap between the measurement and the claim, and checks the rest.
+            </p>
+            
+            <a href="mailto:volmax.core@gmail.com?subject=Battery%20ML%20Audit%20Inquiry" class="btn-cta">Book a Battery ML Audit</a>
+
+            <div class="social-links">
+                <a href="https://github.com/VolMax-Studio" target="_blank" title="GitHub">📁</a>
+                <a href="mailto:volmax.core@gmail.com" title="Email">📧</a>
+                <a href="https://github.com/Whitefox980" target="_blank" title="Developer Profile">👨‍💻</a>
+                <a href="https://play.google.com/store/apps/developer?id=VolMax+Studio" target="_blank" title="Google Play">📱</a>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2026 VolMax Studio. Transforming battery analytics through rigorous independent audits.</p>
+                <p style="margin-top: 10px; opacity: 0.6;">
+                    Made with ❤️ by Whitefox980 & Rocky
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
