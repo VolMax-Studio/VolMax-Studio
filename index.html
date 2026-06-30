@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VolMax Studio - AR/AI Solutions for Professional Industries</title>
+    <title>VolMax Studio Lab — Independent Energy ML & Verification</title>
     <style>
         * {
             margin: 0;
@@ -13,28 +13,21 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: white;
+            background: #030712;
+            color: #f3f4f6;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Animated Background */
+        /* Sober Dark Background */
         .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: radial-gradient(circle at 50% 50%, #0f172a, #020617);
             z-index: -1;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         /* Navigation */
@@ -44,14 +37,9 @@
             width: 100%;
             padding: 20px 50px;
             backdrop-filter: blur(20px);
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(3, 7, 18, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 50px;
         }
 
         .nav-container {
@@ -63,9 +51,9 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #fff, #f093fb);
+            background: linear-gradient(45deg, #ffffff, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -77,14 +65,14 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #9ca3af;
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
-            color: #f093fb;
+            color: #818cf8;
         }
 
         /* Hero Section */
@@ -98,7 +86,7 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             animation: fadeInUp 1s ease;
         }
 
@@ -114,28 +102,20 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f093fb, #f5576c);
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #ffffff, #818cf8, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            from {
-                filter: drop-shadow(0 0 20px rgba(240, 147, 251, 0.5));
-            }
-            to {
-                filter: drop-shadow(0 0 40px rgba(245, 87, 108, 0.8));
-            }
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #9ca3af;
+            font-style: italic;
         }
 
         .cta-buttons {
@@ -143,11 +123,10 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 40px;
         }
 
         .btn {
-            padding: 15px 30px;
+            padding: 15px 35px;
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -159,25 +138,25 @@
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
+            background: linear-gradient(45deg, #818cf8, #3b82f6);
             color: white;
-            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(240, 147, 251, 0.4);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
             transform: translateY(-3px);
         }
 
@@ -185,14 +164,16 @@
         .stats {
             padding: 80px 20px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(3, 7, 18, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -203,7 +184,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #f093fb, #f5576c);
+            background: linear-gradient(45deg, #818cf8, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: block;
@@ -212,10 +193,10 @@
 
         .stat-label {
             font-size: 1.1rem;
-            opacity: 0.8;
+            color: #9ca3af;
         }
 
-        /* Projects Section */
+        /* Verification Portfolio Section */
         .projects {
             padding: 100px 20px;
             max-width: 1200px;
@@ -224,120 +205,100 @@
 
         .section-title {
             text-align: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 60px;
-            background: linear-gradient(45deg, #fff, #f093fb);
+            background: linear-gradient(45deg, #ffffff, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 30px;
-            margin-top: 50px;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 20px;
-            padding: 30px;
+            padding: 35px;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(129, 140, 248, 0.3);
         }
 
-        .project-icon {
-            font-size: 3rem;
+        .project-meta {
             margin-bottom: 20px;
         }
 
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #f093fb;
+        .project-title {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .project-desc {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .project-status {
             display: inline-block;
-            padding: 5px 15px;
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 15px;
+            padding: 5px 12px;
+            background: rgba(129, 140, 248, 0.1);
+            color: #818cf8;
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
         }
 
-        .project-status.development {
-            background: linear-gradient(45deg, #2196F3, #1976D2);
-        }
-
-        .project-status.planned {
-            background: linear-gradient(45deg, #FF9800, #F57C00);
-        }
-
-        .project-status.concept {
-            background: linear-gradient(45deg, #9C27B0, #7B1FA2);
-        }
-
-        /* Team Section */
-        .team {
+        /* Doctrine Section */
+        .doctrine {
             padding: 100px 20px;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .team-member {
-            background: rgba(255, 255, 255, 0.05);
+        .doctrine-content {
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 20px;
-            padding: 40px 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .member-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+        .doctrine h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #ffffff;
         }
 
-        .member-name {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #f093fb;
-        }
-
-        .member-role {
-            opacity: 0.8;
-            margin-bottom: 15px;
+        .doctrine p {
+            font-size: 1.15rem;
+            color: #9ca3af;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         /* Footer */
         footer {
-            padding: 50px 20px;
+            padding: 80px 20px 50px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(2, 6, 23, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-content {
@@ -345,29 +306,31 @@
             margin: 0 auto;
         }
 
-        .social-links {
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             margin: 30px 0;
         }
 
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .footer-links a {
+            color: #9ca3af;
             text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
-        .social-links a:hover {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            transform: translateY(-3px);
+        .footer-links a:hover {
+            color: #818cf8;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #4b5563;
         }
 
         /* Responsive */
@@ -381,33 +344,12 @@
             }
             
             .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+                font-size: 2.5rem;
             }
             
             .project-grid {
                 grid-template-columns: 1fr;
             }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -416,12 +358,11 @@
 
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">VolMax Studio</div>
+            <div class="logo">VolMax Studio Lab</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="audit.html">Battery ML Audit</a></li>
-                <li><a href="#projects">AR Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#portfolio">Verification Works</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -429,206 +370,110 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>VolMax Studio</h1>
-            <p>Professional AR/AI Solutions for Skilled Trades</p>
-            <p>Transforming traditional craftsmanship through cutting-edge technology</p>
+            <h1>Independent Energy ML Verification</h1>
+            <p>We stand at the gap between the measurement and the claim. We audit SOH, RUL, and diagnostic models against physical law and raw held-out data.</p>
             
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Our Portfolio</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="audit.html" class="btn btn-primary">Battery ML Audit Service</a>
+                <a href="#portfolio" class="btn btn-secondary">Our Public Audits</a>
             </div>
         </div>
     </section>
 
     <section class="stats">
         <div class="stats-grid">
-            <div class="stat-item fade-in">
-                <span class="stat-number">6+</span>
-                <span class="stat-label">AR Applications</span>
+            <div class="stat-item">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Published DOIs</span>
             </div>
-            <div class="stat-item fade-in">
-                <span class="stat-number">312+</span>
-                <span class="stat-label">GitHub Collaborations</span>
-            </div>
-            <div class="stat-item fade-in">
+            <div class="stat-item">
                 <span class="stat-number">100%</span>
-                <span class="stat-label">Trade Coverage</span>
+                <span class="stat-label">Code Reproducibility</span>
             </div>
-            <div class="stat-item fade-in">
-                <span class="stat-number">2025</span>
-                <span class="stat-label">Innovation Year</span>
+            <div class="stat-item">
+                <span class="stat-number">0%</span>
+                <span class="stat-label">Commercial Flattery Bias</span>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <h2 class="section-title fade-in">Our AR Portfolio</h2>
+    <section id="portfolio" class="projects">
+        <h2 class="section-title">Public Verification Portfolios</h2>
         
         <div class="project-grid">
-            <div class="project-card fade-in" onclick="window.open('https://fitar.vercel.app', '_blank')">
-                <div class="project-icon">👗</div>
-                <h3>FitAR - AI/AR Fashion Try-On</h3>
-                <p>Revolutionary mobile app using Augmented Reality & AI for virtual clothing try-on with 3D body scanning. One scan, unlimited outfit testing!</p>
-                <span class="project-status">🚀 Live</span>
+            
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-title">EKF Dynamic Sampling Audit</h3>
+                    <p class="project-desc">Reproduced a published 99.65% sample-reduction claim, verified it on quasi-static profile, and proved it does not transfer to EV dynamic load, resulting in 24.84% SOC RMSE.</p>
+                </div>
+                <div>
+                    <span class="project-status">DOI 10.5281/zenodo.21009974</span>
+                </div>
             </div>
 
-            <div class="project-card fade-in">
-                <div class="project-icon">🔌</div>
-                <h3>ElektricAR - Electrical Professionals</h3>
-                <p>Revolutionary AR planning tool for electricians with AI cost calculation, real-time element placement, and professional PDF reports.</p>
-                <span class="project-status development">🟢 Active Development</span>
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-title">Battery Health (NASA PCoE)</h3>
+                    <p class="project-desc">Estimated battery prognostic predictability boundaries. Proved charge-transfer resistance (R_ct) fails as an early-indicator input, and developed cross-cell models.</p>
+                </div>
+                <div>
+                    <span class="project-status">DOI 10.5281/zenodo.20752869</span>
+                </div>
             </div>
 
-            <div class="project-card fade-in">
-                <div class="project-icon">🚰</div>
-                <h3>VodaAR - Plumbing Specialists</h3>
-                <p>Professional AR tools for plumbing contractors with smart pipe routing, material calculations, and industry compliance.</p>
-                <span class="project-status planned">📋 Q4 2025</span>
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-title">Transformer DGA Diagnostics</h3>
+                    <p class="project-desc">Stress-tested Duval Triangle and Machine Learning models against IEEE chromatograph noise, identifying that geometry edges, not noise, limit traditional rules.</p>
+                </div>
+                <div>
+                    <span class="project-status">DOI 10.5281/zenodo.20766195</span>
+                </div>
             </div>
 
-            <div class="project-card fade-in">
-                <div class="project-icon">🎨</div>
-                <h3>MolerAR - Painting Professionals</h3>
-                <p>AR visualization for painters and decorators with color matching, surface area calculation, and material estimation.</p>
-                <span class="project-status concept">🎯 Concept</span>
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-title">VolMax HALO Optimizer</h3>
+                    <p class="project-desc">Direct Feedback Alignment (DFA) edge adaptation framework. Achieved O(1) depth memory scaling and documented exact limits on Softmax Attention layers.</p>
+                </div>
+                <div>
+                    <span class="project-status">DOI 10.5281/zenodo.21010289</span>
+                </div>
             </div>
 
-            <div class="project-card fade-in">
-                <div class="project-icon">🧱</div>
-                <h3>GipsAR - Drywall & Plastering</h3>
-                <p>Advanced AR tools for gypsum professionals with precision measurement, joint planning, and quality control systems.</p>
-                <span class="project-status concept">🛠️ Planning</span>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-icon">🪵</div>
-                <h3>ParketAR - Flooring Specialists</h3>
-                <p>Professional AR application for flooring contractors with pattern visualization, wood grain matching, and installation planning.</p>
-                <span class="project-status concept">💡 Research</span>
-            </div>
         </div>
     </section>
 
-    <section id="team" class="team">
-        <h2 class="section-title fade-in">The Team</h2>
-        
-        <div class="team-grid">
-            <div class="team-member fade-in">
-                <div class="member-avatar">👨‍💻</div>
-                <h3 class="member-name">Whitefox980</h3>
-                <p class="member-role">Lead Developer & Founder</p>
-                <p>Mobile AR/AI development expert, 312+ GitHub collaborations, and VolMax Studio architect.</p>
-            </div>
-
-            <div class="team-member fade-in">
-                <div class="member-avatar">🗿</div>
-                <h3 class="member-name">Rocky</h3>
-                <p class="member-role">AI Development Assistant</p>
-                <p>Strategic planning, architecture design, and intelligent development support specialist.</p>
-            </div>
-        </div>
-
-        <div class="fade-in" style="margin-top: 40px;">
-            <p style="font-size: 1.2rem; opacity: 0.8;">
-                "Empowering skilled professionals through intelligent technology that enhances human capability rather than replacing it."
+    <section class="doctrine">
+        <div class="doctrine-content">
+            <h2>The Verification Doctrine</h2>
+            <p>
+                "Every number in our reports must regenerate from a single version-controlled script. If it cannot be reproduced automatically, it does not exist."
             </p>
-            <p style="margin-top: 15px; opacity: 0.7;">
-                — VolMax Studio Vision Statement
+            <p style="font-size: 1rem; color: #4b5563; font-style: italic; margin-bottom: 0;">
+                — VolMax Studio Lab Core Mandate
             </p>
         </div>
     </section>
 
     <footer id="contact">
         <div class="footer-content">
-            <h3 style="margin-bottom: 20px; color: #f093fb;">Let's Build Something Amazing</h3>
-            <p style="margin-bottom: 30px; opacity: 0.8;">
-                Ready to transform your industry with AR/AI solutions? We're here to help.
+            <h3 style="margin-bottom: 20px; font-size: 1.8rem; color: #ffffff;">Rigorous. Independent. Reproducible.</h3>
+            <p style="margin-bottom: 40px; opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
+                Have questions about our audits or need a neutral check on a battery model?
             </p>
             
-            <div class="social-links">
-                <a href="https://github.com/VolMax-Studio" target="_blank" title="GitHub">📁</a>
-                <a href="mailto:volmax.core@gmail.com" title="Email">📧</a>
-                <a href="https://github.com/Whitefox980" target="_blank" title="Developer Profile">👨‍💻</a>
-                <a href="https://play.google.com/store/apps/developer?id=VolMax+Studio" target="_blank" title="Google Play">📱</a>
+            <div class="footer-links">
+                <a href="https://github.com/VolMax-Studio" target="_blank">GitHub Profile</a>
+                <a href="mailto:volmax.core@gmail.com">Email Contact</a>
             </div>
 
-            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p>&copy; 2026 VolMax Studio. Transforming skilled trades with AR/AI innovation.</p>
-                <p style="margin-top: 10px; opacity: 0.6;">
-                    Made with ❤️ by Whitefox980 & Rocky
-                </p>
+            <div class="copyright">
+                <p>&copy; 2026 VolMax Studio Lab. All rights reserved.</p>
+                <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.5;">Independent operational data auditing for energy systems.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Interactive project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Console welcome message
-        console.log(`
-        🔥 Welcome to VolMax Studio! 🔥
-        
-        AR/AI Solutions Portfolio:
-        👗 FitAR - Live & Running ✅
-        🔌 ElektricAR - In Development ✅  
-        🚰 VodaAR - Coming Soon ✅
-        🎨 MolerAR - Concept Phase ✅
-        
-        Ready to revolutionize skilled trades? 🚀
-        Contact: volmax.core@gmail.com
-        `);
-    </script>
 </body>
 </html>

@@ -13,29 +13,21 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #060606;
+            background: #030712;
             color: #f3f4f6;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Animated Background */
+        /* Sober Dark Background */
         .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #111827);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: radial-gradient(circle at 50% 50%, #0f172a, #020617);
             z-index: -1;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         /* Navigation */
@@ -45,7 +37,7 @@
             width: 100%;
             padding: 20px 50px;
             backdrop-filter: blur(20px);
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(3, 7, 18, 0.4);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 1000;
         }
@@ -59,9 +51,9 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #fff, #f093fb);
+            background: linear-gradient(45deg, #ffffff, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             cursor: pointer;
@@ -74,14 +66,14 @@
         }
 
         .nav-links a {
-            color: #d1d5db;
+            color: #9ca3af;
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 500;
         }
 
         .nav-links a:hover {
-            color: #f093fb;
+            color: #818cf8;
         }
 
         /* Main Content Container */
@@ -110,17 +102,17 @@
         }
 
         .header h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f093fb, #f5576c);
+            background: linear-gradient(45deg, #ffffff, #818cf8, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
         }
 
         .header p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #9ca3af;
             max-width: 750px;
             margin: 0 auto;
@@ -129,7 +121,7 @@
 
         /* Highlight box */
         .problem-box {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.015);
             border-radius: 20px;
             padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -138,14 +130,14 @@
         }
 
         .problem-box h2 {
-            font-size: 1.8rem;
-            color: #f5576c;
+            font-size: 1.6rem;
+            color: #818cf8;
             margin-bottom: 20px;
             font-weight: 700;
         }
 
         .problem-box p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #d1d5db;
             margin-bottom: 15px;
         }
@@ -156,10 +148,10 @@
         }
 
         .checks-section h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 40px;
             text-align: center;
-            background: linear-gradient(45deg, #fff, #f093fb);
+            background: linear-gradient(45deg, #ffffff, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -171,10 +163,10 @@
         }
 
         .check-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 16px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             transition: all 0.3s ease;
             display: flex;
             gap: 20px;
@@ -182,20 +174,20 @@
         }
 
         .check-card:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(240, 147, 251, 0.3);
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(129, 140, 248, 0.2);
         }
 
         .check-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            color: #f093fb;
+            color: #818cf8;
             line-height: 1;
-            background: rgba(240, 147, 251, 0.1);
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            background: rgba(129, 140, 248, 0.08);
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -203,7 +195,7 @@
         }
 
         .check-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: #ffffff;
             margin-bottom: 10px;
             font-weight: 600;
@@ -211,19 +203,20 @@
 
         .check-content p {
             color: #9ca3af;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 12px;
+            line-height: 1.5;
         }
 
         .check-output {
             font-family: monospace;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             padding: 8px 15px;
             border-radius: 6px;
             display: inline-block;
-            font-size: 0.9rem;
-            color: #f093fb;
-            border-left: 3px solid #f093fb;
+            font-size: 0.85rem;
+            color: #818cf8;
+            border-left: 3px solid #818cf8;
         }
 
         /* Verdicts */
@@ -232,10 +225,10 @@
         }
 
         .verdicts-section h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 40px;
             text-align: center;
-            background: linear-gradient(45deg, #fff, #f093fb);
+            background: linear-gradient(45deg, #ffffff, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -247,15 +240,15 @@
         }
 
         .verdict-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 16px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             text-align: center;
         }
 
         .verdict-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -266,21 +259,21 @@
             color: #2ec4b6;
         }
         .verdict-card.supported {
-            border-top: 4px solid #2ec4b6;
+            border-top: 3px solid #2ec4b6;
         }
 
         .verdict-artifact {
             color: #e67e22;
         }
         .verdict-card.artifact {
-            border-top: 4px solid #e67e22;
+            border-top: 3px solid #e67e22;
         }
 
         .verdict-unfalsifiable {
             color: #9b59b6;
         }
         .verdict-card.unfalsifiable {
-            border-top: 4px solid #9b59b6;
+            border-top: 3px solid #9b59b6;
         }
 
         .verdict-card p {
@@ -297,27 +290,27 @@
         }
 
         .guarantees-box {
-            background: rgba(46, 196, 182, 0.03);
+            background: rgba(46, 196, 182, 0.01);
             border-radius: 20px;
             padding: 40px;
-            border: 1px solid rgba(46, 196, 182, 0.15);
+            border: 1px solid rgba(46, 196, 182, 0.1);
         }
 
         .guarantees-box h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #2ec4b6;
             margin-bottom: 25px;
         }
 
         .no-guarantees-box {
-            background: rgba(245, 87, 108, 0.03);
+            background: rgba(245, 87, 108, 0.01);
             border-radius: 20px;
             padding: 40px;
-            border: 1px solid rgba(245, 87, 108, 0.15);
+            border: 1px solid rgba(245, 87, 108, 0.1);
         }
 
         .no-guarantees-box h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #f5576c;
             margin-bottom: 25px;
         }
@@ -351,22 +344,22 @@
 
         /* Credentials Section */
         .credentials-section {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 20px;
             padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             margin-bottom: 80px;
         }
 
         .credentials-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #ffffff;
             margin-bottom: 20px;
         }
 
         .credentials-section p {
             color: #d1d5db;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 25px;
         }
 
@@ -377,10 +370,10 @@
         }
 
         .credential-link-item {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.15);
             padding: 20px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -389,8 +382,8 @@
         }
 
         .credential-link-item:hover {
-            border-color: #f093fb;
-            background: rgba(240, 147, 251, 0.05);
+            border-color: #818cf8;
+            background: rgba(129, 140, 248, 0.03);
         }
 
         .credential-link-text h4 {
@@ -406,33 +399,33 @@
         }
 
         .doi-badge {
-            background: rgba(240, 147, 251, 0.1);
-            color: #f093fb;
-            border: 1px solid rgba(240, 147, 251, 0.3);
+            background: rgba(129, 140, 248, 0.05);
+            color: #818cf8;
+            border: 1px solid rgba(129, 140, 248, 0.15);
             padding: 4px 10px;
             border-radius: 6px;
             font-family: monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         /* Audience Box */
         .audience-box {
             text-align: center;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.015);
             border-radius: 20px;
             padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             margin-bottom: 80px;
         }
 
         .audience-box h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            color: #f093fb;
+            color: #818cf8;
         }
 
         .audience-box p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #d1d5db;
             max-width: 800px;
             margin: 0 auto;
@@ -442,7 +435,7 @@
         footer {
             padding: 80px 20px 50px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(2, 6, 23, 0.8);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -452,15 +445,15 @@
         }
 
         .btn-cta {
-            padding: 20px 40px;
-            font-size: 1.25rem;
-            background: linear-gradient(45deg, #f093fb, #f5576c);
+            padding: 18px 40px;
+            font-size: 1.15rem;
+            background: linear-gradient(45deg, #818cf8, #3b82f6);
             color: white;
             border: none;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
             text-decoration: none;
             display: inline-block;
             margin-bottom: 40px;
@@ -469,32 +462,34 @@
 
         .btn-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(240, 147, 251, 0.5);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25);
         }
 
-        .social-links {
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             margin: 30px 0;
         }
 
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .footer-links a {
+            color: #9ca3af;
             text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
-        .social-links a:hover {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            transform: translateY(-3px);
+        .footer-links a:hover {
+            color: #818cf8;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #4b5563;
         }
 
         /* Responsive styling */
@@ -524,12 +519,11 @@
 
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='index.html'">VolMax Studio</div>
+            <div class="logo" onclick="window.location.href='index.html'">VolMax Studio Lab</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="audit.html" style="color: #f093fb;">Battery ML Audit</a></li>
-                <li><a href="index.html#projects">AR Portfolio</a></li>
-                <li><a href="index.html#team">Team</a></li>
+                <li><a href="audit.html" style="color: #818cf8;">Battery ML Audit</a></li>
+                <li><a href="index.html#portfolio">Verification Works</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -680,7 +674,7 @@
                     <span class="doi-badge">DOI 10.5281/zenodo.21010289</span>
                 </a>
 
-                <a href="https://github.com/VolMax-Studio/iot2/tree/main/PORTFOLIO/Battery_Health_Portfolio" target="_blank" class="credential-link-item">
+                <a href="https://github.com/VolMax-Studio/electrisim-soh-capability-demo" target="_blank" class="credential-link-item">
                     <div class="credential-link-text">
                         <h4>Battery Health Portfolio</h4>
                         <p>Li-ion battery prognostic predictability boundaries, impedance observability study and early predictions on NASA PCoE dataset.</p>
@@ -699,25 +693,21 @@
 
     <footer id="contact">
         <div class="footer-content">
-            <h2 style="margin-bottom: 20px; color: #f093fb;">Ready for a Neutral Check?</h2>
-            <p style="margin-bottom: 30px; opacity: 0.8; max-width: 600px; margin: 0 auto 40px;">
+            <h2 style="margin-bottom: 20px; color: #ffffff;">Ready for a Neutral Check?</h2>
+            <p style="margin-bottom: 40px; opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
                 Physics doesn't lie. Sensors don't lie. The audit stands at the gap between the measurement and the claim, and checks the rest.
             </p>
             
             <a href="mailto:volmax.core@gmail.com?subject=Battery%20ML%20Audit%20Inquiry" class="btn-cta">Book a Battery ML Audit</a>
 
-            <div class="social-links">
-                <a href="https://github.com/VolMax-Studio" target="_blank" title="GitHub">📁</a>
-                <a href="mailto:volmax.core@gmail.com" title="Email">📧</a>
-                <a href="https://github.com/Whitefox980" target="_blank" title="Developer Profile">👨‍💻</a>
-                <a href="https://play.google.com/store/apps/developer?id=VolMax+Studio" target="_blank" title="Google Play">📱</a>
+            <div class="footer-links">
+                <a href="https://github.com/VolMax-Studio" target="_blank">GitHub Profile</a>
+                <a href="mailto:volmax.core@gmail.com">Email Contact</a>
             </div>
 
-            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p>&copy; 2026 VolMax Studio. Transforming battery analytics through rigorous independent audits.</p>
-                <p style="margin-top: 10px; opacity: 0.6;">
-                    Made with ❤️ by Whitefox980 & Rocky
-                </p>
+            <div class="copyright">
+                <p>&copy; 2026 VolMax Studio Lab. All rights reserved.</p>
+                <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.5;">Independent operational data auditing for energy systems.</p>
             </div>
         </div>
     </footer>
