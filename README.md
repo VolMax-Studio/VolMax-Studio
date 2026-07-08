@@ -27,6 +27,8 @@ All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible
 
 | Claim under test | Subject | Verdict | Record |
 |---|---|---|---|
+| Active power export capacity (98 MW claim) | Pillswood BESS (98 MW / 196 MWh, GB) | Verified with Limitations (Bounded) | [10.5281/zenodo.21254253](https://doi.org/10.5281/zenodo.21254253) |
+| Energy storage capacity (196 MWh claim) | Pillswood BESS (98 MW / 196 MWh, GB) | Verified with Limitations (Bounded) | [10.5281/zenodo.21254253](https://doi.org/10.5281/zenodo.21254253) |
 | FCA regime transition from July 2025 | ECO STOR Bollingstedt BESS (103.5 MW, DE) | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
 | "Grid limits never violated" | ECO STOR Bollingstedt BESS | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
 | Netzdienlich (grid-supportive) operation | ECO STOR Bollingstedt BESS | Consistent with claim; intent not distinguishable from price-driven dispatch | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
