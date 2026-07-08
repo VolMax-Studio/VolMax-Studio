@@ -1,103 +1,51 @@
 # VolMax Studio Lab
 
-**Power electronics engineer + energy ML.**
+**Independent verification of battery & energy-storage claims — models, telemetry, and operational data.**
 
-Domain-grounded open tools for grid monitoring, load disaggregation, battery diagnostics, motor fault detection, and embedded signal processing. The edge: real electrical domain knowledge combined with the ability to code — a combination that's rare enough to matter.
+The energy-storage market runs on confident numbers: "98% SOH accuracy," "grid limits never violated," "10-year RUL." We provide the independent check — whether the claim comes from a machine-learning model or a 100 MW asset's operating record.
 
----
-
-## Active Portfolio
-
-### [PowerQuality_Classifier_Portfolio](https://github.com/VolMax-Studio/PowerQuality_Classifier_Portfolio)
-17-class power quality disturbance classifier on IEEE-1159 parametric data. Random Forest + spectral feature engineering. Honest results: ~78% accuracy with full confusion matrix and Streamlit dashboard.
-
-**Stack:** Python · scikit-learn · Streamlit
+We do not audit companies. We audit **claims**.
 
 ---
 
-### [NILM_Disaggregation_Portfolio](https://github.com/VolMax-Studio/NILM_Disaggregation_Portfolio)
-Energy disaggregation on real REDD data (Kolter & Johnson 2011) — House 3, ~3 days of smart meter measurements. Random Forest with physics-informed features for load separation from aggregate mains.
+## The P10 Verification Method
 
-**Stack:** Python · scikit-learn · pandas
+Every audit runs under [P10](https://github.com/VolMax-Studio/P10-Verification-Method) — an ordered, halt-on-failure protocol: **L0** admissibility (license & data access) → **L1** data integrity → **L2** physics compliance → **L3** statistical integrity → **L4** reproducibility → **L5** verdict. Every published number regenerates from a single script against hash-pinned data.
 
----
+Verdict vocabulary:
 
-### [Battery_Health_Portfolio](https://github.com/VolMax-Studio/Battery_Health_Portfolio)
-Predictability-horizon study on real NASA PCoE Li-ion cells (B0005/06/18; B0007 censored and excluded — never reaches EOL). Three measured findings, none assumed: a single cell hides its own end-of-life (B0005 mispredicted +157 cycles from a 50-cycle window), the textbook leading indicator Rct does not lead (late-life MAE 0.333→0.332 Ah — no gain), and the population reveals what the cell hides (cross-cell leave-one-out ~10–16 cycle EOL error). Predictability is population-level, not individual. DOI 10.5281/zenodo.20752869.
+- **Verified** — the data supports the claim as stated.
+- **Verified with Limitations** — the claim holds within stated boundaries (resolution floors, descriptive bands, data provenance caveats).
+- **Not Verified** — the data does not support the claim; includes our own rejected hypotheses.
+- **Unfalsifiable-as-Stated** — the claim cannot be independently tested from publicly available data as currently published.
 
-**Stack:** Python · scikit-learn · scipy.io
+The protocol applies to our own work first: see the [public rejection notice](https://github.com/VolMax-Studio/P10-Verification-Method/blob/main/REJECTION_NOTICE_v1.1.md) for a proposed protocol extension that failed its own admissibility rules.
 
----
+## Evidence Registry
 
-### [power_signal_tools](https://github.com/VolMax-Studio/power_signal_tools)
-Importable Python library: windowed RMS, THD-F/R via FFT, DWT transient detection, Hilbert envelope for sag/swell, rolling z-score. 39/39 analytically verified tests.
+All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible pipeline. Verdicts below are quoted verbatim from each report's verdict ledger.
 
-**Stack:** Python · NumPy · SciPy · PyWavelets
+| Claim under test | Subject | Verdict | Record |
+|---|---|---|---|
+| FCA regime transition from July 2025 | ECO STOR Bollingstedt BESS (103.5 MW, DE) | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
+| "Grid limits never violated" | ECO STOR Bollingstedt BESS | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
+| Netzdienlich (grid-supportive) operation | ECO STOR Bollingstedt BESS | Consistent with claim; intent not distinguishable from price-driven dispatch | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
+| 5-minute dispatch conformance | AEMO NEM BESS fleet (16 units ≥50 MW, AU) | Verified (descriptive band; not a regulatory determination) | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
+| Cross-jurisdictional generalization of operational signatures (our hypothesis) | AEMO fleet vs. European reference | Not Verified — hypothesis rejected | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
+| Unit-level FCAS response (Hornsdale) | AEMO NEM | Unfalsifiable-as-Stated — public 4-second telemetry withdrawn under FPP | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
+| SOH early-prediction uncertainty under distribution shift | UQ / conformal prediction audit | UQ necessary but not sufficient under shift | [10.5281/zenodo.21084102](https://doi.org/10.5281/zenodo.21084102) |
+| EKF state-estimation replication | Published SOC/thermal estimator | Replicated with documented deviations | [10.5281/zenodo.21009974](https://doi.org/10.5281/zenodo.21009974) |
 
----
+*(Registry rows are added only after a report is frozen and its DOI is live. Exploratory analyses — no verdict issued — are published separately on GitHub and are not listed here.)*
 
-### [Fluid_Leakage_Detection_Portfolio](https://github.com/VolMax-Studio/Fluid_Leakage_Detection_Portfolio)
-Non-intrusive leak detection in water distribution networks — same NILM principle applied to hydraulic systems. DWT burst detection + RF baseline residual alarm + sensitivity matrix localization.
+## Foundational portfolio
 
-**Stack:** Python · scikit-learn · SciPy
-
----
-
-### [MCSA_Fault_Diagnostics_Portfolio](https://github.com/VolMax-Studio/MCSA_Fault_Diagnostics_Portfolio)
-Motor Current Signature Analysis: broken rotor bar, bearing outer-race, stator inter-turn short circuit — all from stator current alone. Welch PSD with Kaiser window, Fortescue sequence analysis. 12/12 tests.
-
-**Stack:** Python · NumPy · SciPy
-
----
-
-### [CWRU_Bearing_Diagnostics](https://github.com/VolMax-Studio/CWRU_Bearing_Diagnostics)
-Incipient bearing-fault diagnostics on real Case Western Reserve University (CWRU) data (SKF 6205-2RS, 12 kHz drive-end, 0 HP, 0.007″ EDM faults). Bandpass-filtered Hilbert envelope → Squared Envelope Spectrum. On real measurements every fault frequency localizes within ~2% of theory (BPFO 108.0 vs 107.4 Hz, BPFI 162.0 vs 162.2 Hz, BSF 72.0 vs 70.6 Hz). The detection difficulty lives in time-domain impulsiveness: filtered kurtosis falls from outer-race 4.75 (sharp stationary defect) through inner-race 2.63 (load-zone modulated) to ball 0.0 (non-impulsive — the impulse train is smeared by rolling-element slip), quantifying why rolling-element faults are the hard case for envelope methods. Healthy baseline shows no fault peak (kurtosis −1.05). 17/17 tests.
-
-**Stack:** Python · SciPy · NumPy
+The audit practice is grounded in two decades of hands-on power-electronics and power-systems work (DE / NL / RS) and a build portfolio spanning battery SOH modeling, power-quality analysis, NILM, condition monitoring, and embedded telemetry. Those repositories remain public below as domain groundwork; they are builds, not audits, and carry no P10 verdicts.
 
 ---
 
-### [Grid_Frequency_Analysis](https://github.com/VolMax-Studio/Grid_Frequency_Analysis)
-Continental European grid frequency dynamics: swing equation model (H=6s, IEC parameters), ROCOF calculation, EN 50160 compliance checking, disturbance event detection. 14/14 tests. Accepts real ENTSO-E CSV data.
+**Engagements:** independent battery & BESS audits under P10 — SOH/RUL model verification, operational-claims verification from field data, reproducibility and data-leakage checks.
 
-**Stack:** Python · SciPy · NumPy
+**Contact:** volmax.contact@gmail.com · [volmax-studio.rs](https://volmax-studio.rs) · [LinkedIn](https://www.linkedin.com/in/ivan-nestorov-274157371) · Zenodo: [Ivan Nestorov](https://zenodo.org/search?q=Nestorov%2C%20Ivan)
 
----
-
-### [PV_Anomaly_Detection](https://github.com/VolMax-Studio/PV_Anomaly_Detection)
-Controlled anomaly-detection benchmark on real NREL TMY3 meteorological data (ASOS 723170, Greensboro NC — 8760h measured) and real CEC module parameters (Canadian Solar CS5P-250M), modelled via pvlib single-diode physics (de Soto 2006). Synthetic faults (soiling, shading, PID, inverter) are injected as ground-truth; Isolation Forest scores Precision 0.985 / Recall 0.565 against the injected labels — a low-false-alarm, conservative-recall regime: reliable on clear anomalies, misses subtler ones. 26 passing tests.
-
-**Stack:** Python · pvlib · scikit-learn
-
----
-
-### [Transformer_Health_Portfolio](https://github.com/VolMax-Studio/Transformer_Health_Portfolio)
-Transformer health assessment: IEC 60076-7 thermal model (top-oil + hot-spot), Arrhenius insulation aging, IEC 60599 DGA interpretation with Duval triangle + Rogers ratios. 40 MVA ONAN substation transformer. 27/27 tests.
-
-**Stack:** Python · SciPy · NumPy
-
----
-
-### [VPP_Frequency_Regulation](https://github.com/VolMax-Studio/VPP_Frequency_Regulation)
-Virtual Power Plant (VPP) active frequency regulation simulation on a regional grid: FCR (Primary) and aFRR (Secondary AGC) control loops, battery storage (BESS), solar PV clipping, and flexible loads dispatch. Closed-loop swing equation dynamics. 21/21 tests.
-
-**Stack:** Python · SciPy · NumPy
-
----
-
-## Background
-
-20+ years in electrical work — residential, industrial, telecom — across Serbia and Western Europe. Self-directed R&D in edge AI, power electronics control, and embedded signal processing. Company: VolMax Studio Lab d.o.o., Titel, Serbia.
-
-The open portfolio is a direct extension of field work. The problems being solved here are problems encountered in real electrical infrastructure.
-
----
-
-## Contact
-
-**Email:** volmax.core@gmail.com  
-**Location:** Novi Sad / Titel, Serbia  
-**Website:** volmax-studio.rs
-
-Open to: energy ML roles · embedded systems engineering · technical collaborations · contract work in power quality and grid monitoring.
-
+VolMax Studio Lab d.o.o. · Titel, Serbia
