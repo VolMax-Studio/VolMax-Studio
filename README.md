@@ -23,7 +23,7 @@ All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible
 | FCA regime transition from July 2025 | ECO STOR Bollingstedt BESS (103.5 MW, DE) | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
 | "Grid limits never violated" | ECO STOR Bollingstedt BESS | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
 | Netzdienlich (grid-supportive) operation | ECO STOR Bollingstedt BESS | Consistent with claim; intent not distinguishable from price-driven dispatch | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
-| 5-minute dispatch conformance | AEMO NEM BESS fleet (16 units ≥50 MW, AU) | Verified (descriptive band; not a regulatory determination) | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
+| 5-minute dispatch conformance | AEMO NEM BESS fleet (16 units ≥50 MW, AU) | Verified with Limitations (Descriptive Band; not a regulatory determination) | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
 | Cross-jurisdictional generalization of operational signatures (our hypothesis) | AEMO fleet vs. European reference | Not Verified — hypothesis rejected | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
 | Unit-level FCAS response (Hornsdale) | AEMO NEM | Unfalsifiable-as-Stated — public 4-second telemetry withdrawn under FPP | [10.5281/zenodo.21190094](https://doi.org/10.5281/zenodo.21190094) |
 | SOH early-prediction uncertainty under distribution shift | UQ / conformal prediction audit | UQ necessary but not sufficient under shift | [10.5281/zenodo.21084102](https://doi.org/10.5281/zenodo.21084102) |
