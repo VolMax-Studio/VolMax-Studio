@@ -6,6 +6,8 @@ The energy-storage market runs on confident numbers: "98% SOH accuracy," "grid l
 
 We do not audit companies. We audit **claims**.
 
+![P10 verification flow: claim enters L0 gate, either halts as Unfalsifiable or proceeds through L1-L4 to one of four verdicts](p10_decision_tree.png)
+
 ---
 
 ## Evidence Registry
