@@ -1,6 +1,7 @@
 # VolMax Studio Lab
 
-**Independent verification of battery & energy-storage claims — models, telemetry, and operational data.**
+**Making public claims independently verifiable.**  
+*Because trust should be verifiable.*
 
 The energy-storage market runs on confident numbers: "98% SOH accuracy," "grid limits never violated," "10-year RUL." We provide the independent check — whether the claim comes from a machine-learning model or a 100 MW asset's operating record.
 
@@ -22,6 +23,10 @@ All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible
 | Energy storage capacity (480 MWh claim) | esVolta Anole BESS (240 MW / 480 MWh, US-TX) | Verified with Limitations (Claim Demonstrated) | [10.5281/zenodo.21304135](https://doi.org/10.5281/zenodo.21304135) |
 | SoC telemetry consistency | esVolta Anole BESS | Inconsistent (per frozen rule; 55.2% pass overall; exploratory major event stratification 81.8% pass) | [10.5281/zenodo.21304135](https://doi.org/10.5281/zenodo.21304135) |
 | SoC telemetry semantics | esVolta Anole BESS | Deferred (Peak SoC observed = 558.0 MWh, +78.0 MWh; max_soc = 560.3 MWh, +80.3 MWh above nameplate) | [10.5281/zenodo.21304135](https://doi.org/10.5281/zenodo.21304135) |
+| Active power export capacity (100 MW claim) | Bat Cave BESS (100 MW / 100 MWh, US-TX) | Not Demonstrated (verdict v1.2; Bounded) | [10.5281/zenodo.21416615](https://doi.org/10.5281/zenodo.21416615) |
+| Energy storage capacity (100 MWh claim) | Bat Cave BESS (100 MW / 100 MWh, US-TX) | Not Demonstrated (verdict v1.2; Not Verified) | [10.5281/zenodo.21416615](https://doi.org/10.5281/zenodo.21416615) |
+| SoC telemetry consistency | Bat Cave BESS | Inconsistent (per frozen rule; 1.22% pass overall; exploratory major event stratification 1.71% pass) | [10.5281/zenodo.21416615](https://doi.org/10.5281/zenodo.21416615) |
+| SoC telemetry semantics | Bat Cave BESS | Deferred (Peak SoC observed = 102.95 MWh; max_soc = 102.95 MWh; pre-registration compromised by scoping error) | [10.5281/zenodo.21416615](https://doi.org/10.5281/zenodo.21416615) |
 | FCA regime transition from July 2025 | ECO STOR Bollingstedt BESS (103.5 MW, DE) | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
 | "Grid limits never violated" | ECO STOR Bollingstedt BESS | Verified with Limitations | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
 | Netzdienlich (grid-supportive) operation | ECO STOR Bollingstedt BESS | Consistent with claim; intent not distinguishable from price-driven dispatch | [10.5281/zenodo.21135862](https://doi.org/10.5281/zenodo.21135862) |
@@ -32,6 +37,17 @@ All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible
 | EKF state-estimation replication | Published SOC/thermal estimator | Replicated with documented deviations | [10.5281/zenodo.21009974](https://doi.org/10.5281/zenodo.21009974) |
 
 *(Registry rows are added only after a report is frozen and its DOI is live. Exploratory analyses — no verdict issued — are published separately on GitHub and are not listed here.)*
+
+---
+
+## VolMax Open Market Notes
+> **Independent, reproducible measurements of public electricity markets using frozen parameters defined before analysis.**
+
+We publish descriptive, reproducible baselines of public markets to establish objective empirical grounds before duration models are run or investment decisions are made. In accordance with the Open Market Notes doctrine, all metric parameters are frozen and timestamped in Git prior to data analysis.
+
+Our active market baselines are indexed in the [volmax-notes](https://github.com/VolMax-Studio/volmax-notes) repository:
+- **[Note #001: NEM Duration Baseline](https://github.com/VolMax-Studio/volmax-aemo-dispatch-audit/tree/main/notes/nem-duration-baseline)**: Scarcity pricing and charging windows in Mainland Australia NEM. Parameters frozen: 2026-07-18.
+- **Note #002: ERCOT Duration Baseline**: Scarcity pricing and BESS charging windows in ERCOT Hubs. Parameters formulation active.
 
 ---
 
