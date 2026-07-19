@@ -46,8 +46,8 @@ All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible
 We publish descriptive, reproducible baselines of public markets to establish objective empirical grounds before duration models are run or investment decisions are made. In accordance with the Open Market Notes doctrine, all metric parameters are frozen and timestamped in Git prior to data analysis.
 
 Our active market baselines are indexed in the [Open-Market-Notes](https://github.com/VolMax-Studio/Open-Market-Notes) repository:
-- **[Note #001: NEM Duration Baseline](https://github.com/VolMax-Studio/volmax-aemo-dispatch-audit/tree/main/notes/nem-duration-baseline)**: Scarcity pricing and charging windows in Mainland Australia NEM. Parameters frozen: 2026-07-18.
-- **Note #002: ERCOT Duration Baseline**: Scarcity pricing and BESS charging windows in ERCOT Hubs. Parameters formulation active.
+- **[Note #001: NEM Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/001-nem-duration-baseline)**: Scarcity pricing and charging windows in Mainland Australia NEM. Parameters frozen: 2026-07-18.
+- **[Note #002: ERCOT Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/002-ercot-duration-baseline)**: Scarcity pricing and BESS charging windows in ERCOT Hubs. Parameters frozen: 2026-07-19.
 
 ---
 
