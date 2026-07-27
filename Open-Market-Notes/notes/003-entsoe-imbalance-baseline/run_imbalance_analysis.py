@@ -89,15 +89,18 @@ for pfile in proc_files:
             events.append(current_len * 15)
             
         if not events:
-            return {"count": 0, "mean_min": 0, "median_min": 0, "p90_min": 0, "max_min": 0}
+            return {"count": 0, "mean_min": 0, "median_min": 0, "p90_min": 0, "p95_min": 0, "p99_min": 0, "max_min": 0}
             
         return {
             "count": len(events),
             "mean_min": round(float(np.mean(events)), 1),
             "median_min": round(float(np.median(events)), 1),
             "p90_min": round(float(np.percentile(events, 90)), 1),
+            "p95_min": round(float(np.percentile(events, 95)), 1),
+            "p99_min": round(float(np.percentile(events, 99)), 1),
             "max_min": int(np.max(events))
         }
+
 
     m1_100 = compute_m1(p_short, 100.0)
     m1_250 = compute_m1(p_short, 250.0)
