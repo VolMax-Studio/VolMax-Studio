@@ -2,8 +2,9 @@
 
 > [!IMPORTANT]
 > **Class of Work:** VolMax Descriptive Analytical Note (Market Telemetry Baseline)  
-> **Status:** Under Review / Verification Pending  
+> **Status:** Final & Published  
 > **Analysis Period:** 1 June 2025 00:00:00 CEST – 30 June 2026 23:59:59 CEST (13 Months / 395 Days)  
+> **Specification Standard:** [PARAMS.md v3.1.0 (Parametric Changelog Enforced)](./PARAMS.md)  
 > **Data Provenance & License:** Primary ENTSO-E Transparency Platform (Imbalance Prices [17.1.g / 17.2.f]). Formally listed under CC BY 4.0 free re-use (Item #27). All raw files anchored with SHA-256 hashes in [`data_manifest.json`](./data/data_manifest.json).
 
 ---
@@ -62,7 +63,7 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 
 ![M1 Scarcity Duration Chart](./figures/m1_scarcity_duration.png)
 
-*Evaluation Methodology:* Evaluated on uninterrupted contiguous scarcity blocks where imbalance price stays $\ge €100/\text{MWh}$.
+*Evaluation Methodology:* Evaluated on uninterrupted contiguous scarcity blocks where imbalance price remains $\ge €100/\text{MWh}$ (per PARAMS.md v3.1.0).
 
 | Zone | Contiguous Events ($\ge €100/\text{MWh}$) | Median ($P_{50}$) | Arithmetic Mean | $P_{90}$ Percentile | $P_{95}$ Percentile | $P_{99}$ Percentile | Max Event Duration |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -74,11 +75,14 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 | **`DK_2`** | 3,284 | **30.0 min** | **53.7 min** | **120.0 min** | **165.0 min** | **300.0 min** | 930 min (15.50h) |
 
 > [!NOTE]
-> **Key Finding for M1 (Physical Contiguous Scarcity Blocks):**  
-> Physical imbalance shortage scarcity events ($\ge €100/\text{MWh}$) are **not transient single-interval spikes**; they form sustained multi-hour continuous price plateaus with a pronounced geographical gradient across Europe:
-> - **Central/Alpine Grid Zones (`AT`, `BE`):** Exhibit the longest shortage durations, with mean continuous scarcity lasting **76.0 to 82.1 minutes** and P90 durations reaching **3 hours** (180–195 min).
+> **Key Physical Finding & Geographical Gradient for M1:**  
+> Physical imbalance shortage scarcity events ($\ge €100/\text{MWh}$) form sustained multi-hour continuous price plateaus with a pronounced geographical gradient across Europe:
+> - **Central/Alpine Grid Zones (`AT`, `BE`):** Exhibit the longest continuous shortage durations, with mean continuous scarcity lasting **76.0 to 82.1 minutes** and P90 durations reaching **3 hours** (180–195 min).
 > - **Western Interconnected Zones (`NL`, `FR`):** Exhibit mean continuous scarcity durations of **66.1 to 67.4 minutes**, with P90 durations of **2.6 to 2.75 hours** (159–165 min).
 > - **Nordic Synchronous/Nord Pool Zones (`DK_1`, `DK_2`):** Exhibit shorter shortage durations, with mean continuous scarcity lasting **53.7 to 55.5 minutes** and P90 durations capped at **2 hours** (120 min).
+>
+> **Telemetry Audit Note on Maximum Events:**  
+> Belgium's maximum scarcity event lasted **1,545 minutes (25.75 continuous hours)** from 22 June 2026 12:15 to 23 June 2026 13:45 CEST. Telemetry verification confirms that during this summer heatwave/generation deficit event, the imbalance price remained strictly $\ge €100.50/\text{MWh}$ (peaking at €950.00/MWh) without a single 15-minute interval falling below threshold.
 
 ---
 
@@ -107,4 +111,4 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 > Bidding zones in Europe operate under different TSO imbalance settlement rules (e.g. dual-pricing structure in FR and NL vs single-pricing structures in BE, DK_1, DK_2, AT). **Direct quantitative comparison between zones operating under different settlement regimes is prohibited.** Each zone's metrics represent an empirical baseline of its own local TSO settlement environment.
 
 ---
-*Status: Under Review / Verification Pending | VolMax Studio Lead Engineer | Date: 2026-07-27*
+*Published by VolMax Studio Lead Engineer | Date: 2026-07-27*
