@@ -46,12 +46,12 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **`NL`** (Netherlands) | `10YNL----------L` | **Dual-Pricing (Mixed)** | 66.68% (25,283 / 37,919) | XML returns `A04` & `A05` | `Short` Column | `Long` Column |
 | **`FR`** (France) | `10YFR-RTE------C` | **Dual-Pricing** | 0.25% (96 / 37,919) | XML returns `A04` & `A05` | `Short` Column | `Long` Column |
-| **`BE`** (Belgium) | `10YBE----------X` | **Single-Pricing** | 100.00% (37,919 / 37,919) | Single price payload | Unified $P_{\text{imb}}$ | Unified $P_{\text{imb}}$ |
+| **`BE`** (Belgium) | `10YBE----------X` | **Single-Pricing** | 100.00% (37,919 / 37,919) | XML returns `A04` & `A05` with 100% equal prices | Unified $P_{\text{imb}}$ | Unified $P_{\text{imb}}$ |
 | **`DK_1`** (Denmark West) | `10YDK-1--------W` | **Single-Pricing** | 100.00% (37,870 / 37,870) | XML returns `A04` & `A05` with 100% equal prices | Unified $P_{\text{imb}}$ | Unified $P_{\text{imb}}$ |
 | **`DK_2`** (Denmark East) | `10YDK-2--------T` | **Single-Pricing** | 100.00% (37,869 / 37,869) | XML returns `A04` & `A05` with 100% equal prices | Unified $P_{\text{imb}}$ | Unified $P_{\text{imb}}$ |
 | **`AT`** (Austria) | `10YAT-APG------L` | **Single-Pricing** | 100.00% (37,919 / 37,919) | XML returns `A04` & `A05` with 100% equal prices | Unified $P_{\text{imb}}$ | Unified $P_{\text{imb}}$ |
 
-*Raw XML Audit Confirmation:* For `DK_1`, `DK_2`, and `AT`, ENTSO-E returns two distinct `TimeSeries` (`A04` and `A05`) in the XML payload. The 100.00% equality is an **empirical property of the TSO settlement data** (both categories publish identical numerical prices), confirming it is not a library duplication artifact.
+*Raw XML Audit Confirmation:* For `BE`, `DK_1`, `DK_2`, and `AT`, ENTSO-E returns two distinct `TimeSeries` (`A04` and `A05`) in the XML payload. The 100.00% equality is an **empirical property of the TSO settlement data** (both categories publish identical numerical prices), confirming it is not a library duplication artifact.
 
 *Excluded Zone Boundary Note:* `DE-LU` (Germany/Luxembourg) is explicitly excluded because German TSOs do not publish DocumentType `A85` imbalance settlement prices on the ENTSO-E REST API (published via `regelleistung.net`).
 
@@ -75,11 +75,13 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 | **`DK_2`** | 3,284 | **30.0 min** | **53.7 min** | **120.0 min** | **165.0 min** | **300.0 min** | 930 min (15.50h) |
 
 > [!NOTE]
-> **Key Physical Finding & Geographical Gradient for M1:**  
-> Physical imbalance shortage scarcity events ($\ge €100/\text{MWh}$) form sustained multi-hour continuous price plateaus with a pronounced geographical gradient across Europe:
-> - **Central/Alpine Grid Zones (`AT`, `BE`):** Exhibit the longest continuous shortage durations, with mean continuous scarcity lasting **76.0 to 82.1 minutes** and P90 durations reaching **3 hours** (180–195 min).
-> - **Western Interconnected Zones (`NL`, `FR`):** Exhibit mean continuous scarcity durations of **66.1 to 67.4 minutes**, with P90 durations of **2.6 to 2.75 hours** (159–165 min).
-> - **Nordic Synchronous/Nord Pool Zones (`DK_1`, `DK_2`):** Exhibit shorter shortage durations, with mean continuous scarcity lasting **53.7 to 55.5 minutes** and P90 durations capped at **2 hours** (120 min).
+> **Observation Note on Continuous Scarcity & Cross-Zonal Baseline (13-Month Window):**  
+> Physical imbalance shortage scarcity events ($\ge €100/\text{MWh}$) form sustained multi-hour continuous price plateaus. Over the 13-month telemetry window, continuous block durations exhibit an empirical variation:
+> - **Central/Alpine Grid Zones (`AT`, `BE`):** Show the highest average continuous scarcity durations in this dataset (**76.0 to 82.1 minutes**), with P90 durations reaching **3 hours** (180–195 min).
+> - **Western Interconnected Zones (`NL`, `FR`):** Show mean continuous scarcity durations of **66.1 to 67.4 minutes**, with P90 durations of **2.6 to 2.75 hours** (159–165 min).
+> - **Nordic Synchronous/Nord Pool Zones (`DK_1`, `DK_2`):** Show mean continuous scarcity durations of **53.7 to 55.5 minutes**, with P90 durations of **2 hours** (120 min).
+>
+> *Regime Boundary Caution:* As detailed in Section 4, cross-zonal variation reflects unadjusted local TSO settlement mechanisms and local thermal/renewable generation dynamics over the sample period, rather than normalized structural equivalents.
 >
 > **Telemetry Audit Note on Maximum Events:**  
 > Belgium's maximum scarcity event lasted **1,545 minutes (25.75 continuous hours)** from 22 June 2026 12:15 to 23 June 2026 13:45 CEST. Telemetry verification confirms that during this summer heatwave/generation deficit event, the imbalance price remained strictly $\ge €100.50/\text{MWh}$ (peaking at €950.00/MWh) without a single 15-minute interval falling below threshold.
