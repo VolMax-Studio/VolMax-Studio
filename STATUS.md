@@ -8,8 +8,8 @@
 
 ## 1. Accomplished Deliverables & Milestones (Verified & Committed)
 
+* **Open Market Note #003 ENTSO-E:** **Published & Validated** (`003-entsoe-imbalance-baseline`, PARAMS v3.1.0, 13-month ENTSO-E 15-min imbalance price duration & surplus baseline across 6 zones).
 * **Open Market Note #004 GB:** Published and gated (`004-gb-duration-baseline`).
-* **ENTSO-E Note #003:** Pivoted to Imbalance parameterization, parameters frozen.
 * **HALO-SR & HALO-INT4 Modules:** Decoupled and committed with Zenodo DOI anchors.
 * **P10 Empirical Verification Protocol Series:** Executed 7 pre-registered experimental cycles:
   1. `PQ Forward-Only (v1 & v2)`: $R_{\text{gap}} = 61.10\%$, Guard $86.94\% \implies$ **`[MEASURED: FAIL]`** (Git `ec2bcd0`).
@@ -35,6 +35,7 @@
 ## 3. Resumption Roadmap (Next Priority)
 
 * **Physical Waveform Real-Data Validation:** Validate PQ Joint Rehearsal ($99.14\%$) on real-world physical oscilloscope recordings prior to releasing the VolMax Adaptation Boundary Paper.
+* **Global Market Duration Baseline Series:** Standardize duration & surplus absorption window methodology across NEM, ERCOT, ENTSO-E, and GB into a unified multi-market instrument for battery asset lenders.
 
 ---
-*Status Timestamp: 2026-07-27T19:00:00+02:00 | VolMax Studio Lead Engineer*
+*Status Timestamp: 2026-07-27T22:55:00+02:00 | VolMax Studio Lead Engineer*
