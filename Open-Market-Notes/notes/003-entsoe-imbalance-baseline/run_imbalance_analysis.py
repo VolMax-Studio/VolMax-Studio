@@ -62,31 +62,18 @@ for pfile in proc_files:
     # Threshold B: >= 250 EUR/MWh
     
     def compute_m1(price_series, threshold):
-        above = price_series >= threshold
-        # Find continuous events
+        above = (price_series >= threshold).values
         events = []
-        current_len = 0
-        gap = 0
-        
+        curr = 0
         for val in above:
             if val:
-                if gap > 0 and gap < 2:  # <30 mins (1 interval gap) -> bridge
-                    current_len += gap + 1
-                    gap = 0
-                else:
-                    if current_len > 0:
-                        events.append(current_len * 15)  # in minutes
-                    current_len = 1
-                    gap = 0
+                curr += 1
             else:
-                if current_len > 0:
-                    gap += 1
-                    if gap >= 2:  # 30 mins gap -> close event
-                        events.append(current_len * 15)
-                        current_len = 0
-                        gap = 0
-        if current_len > 0:
-            events.append(current_len * 15)
+                if curr > 0:
+                    events.append(curr * 15)  # duration in minutes
+                    curr = 0
+        if curr > 0:
+            events.append(curr * 15)
             
         if not events:
             return {"count": 0, "mean_min": 0, "median_min": 0, "p90_min": 0, "p95_min": 0, "p99_min": 0, "max_min": 0}
@@ -100,6 +87,7 @@ for pfile in proc_files:
             "p99_min": round(float(np.percentile(events, 99)), 1),
             "max_min": int(np.max(events))
         }
+
 
 
     m1_100 = compute_m1(p_short, 100.0)

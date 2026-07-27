@@ -2,7 +2,7 @@
 
 > [!IMPORTANT]
 > **Class of Work:** VolMax Descriptive Analytical Note (Market Telemetry Baseline)  
-> **Status:** Final & Published  
+> **Status:** Under Review / Verification Pending  
 > **Analysis Period:** 1 June 2025 00:00:00 CEST – 30 June 2026 23:59:59 CEST (13 Months / 395 Days)  
 > **Data Provenance & License:** Primary ENTSO-E Transparency Platform (Imbalance Prices [17.1.g / 17.2.f]). Formally listed under CC BY 4.0 free re-use (Item #27). All raw files anchored with SHA-256 hashes in [`data_manifest.json`](./data/data_manifest.json).
 
@@ -24,10 +24,9 @@ Imbalance prices represent the settlement rate applied by Transmission System Op
        [ M1: System Shortage Scarcity ]               [ M2: Grid Surplus Absorption ]
        (Short Column P_imb^- >= €100/€250)            (Long Column P_imb^+ <= €0/€25)
                        │                                             │
-      Median (P50): 15.0m                             4-Hour Surplus Window: 33.7% – 67.3% Days
-      P90 Duration: 15.0m                             8-Hour Surplus Window: 6.8% – 41.3% Days
-      P95 / P99:    45.0m                             (TSO Settlement Incentive Windows)
-      Mean (Tail):  17.0m – 17.5m
+      Median (P50): 30.0m – 45.0m                     4-Hour Surplus Window: 33.7% – 67.3% Days
+      Mean Duration: 53.7m – 82.1m                    8-Hour Surplus Window: 6.8% – 41.3% Days
+      P90 Duration:  120.0m – 195.0m                  (TSO Settlement Incentive Windows)
 ```
 
 ---
@@ -63,23 +62,23 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 
 ![M1 Scarcity Duration Chart](./figures/m1_scarcity_duration.png)
 
-*Separation Rule:* Events separated by $<30\text{ minutes}$ (less than 2 intervals of 15 minutes) below threshold are counted as separate events.
+*Evaluation Methodology:* Evaluated on uninterrupted contiguous scarcity blocks where imbalance price stays $\ge €100/\text{MWh}$.
 
-| Zone | Threshold $\ge €100/\text{MWh}$ (Events) | Median ($P_{50}$) | $P_{90}$ | $P_{95}$ | $P_{99}$ | Mean (Right-Tail Shift) | Max Event |
+| Zone | Contiguous Events ($\ge €100/\text{MWh}$) | Median ($P_{50}$) | Arithmetic Mean | $P_{90}$ Percentile | $P_{95}$ Percentile | $P_{99}$ Percentile | Max Event Duration |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`NL`** | 16,444 | **15.0 min** | **15.0 min** | **45.0 min** | **45.0 min** | **17.5 min** | 165 min (2.75h) |
-| **`FR`** | 10,049 | **15.0 min** | **15.0 min** | **45.0 min** | **45.0 min** | **17.2 min** | 105 min (1.75h) |
-| **`BE`** | 13,696 | **15.0 min** | **15.0 min** | **45.0 min** | **45.0 min** | **17.1 min** | 135 min (2.25h) |
-| **`DK_1`** | 10,272 | **15.0 min** | **15.0 min** | **45.0 min** | **45.0 min** | **17.4 min** | 135 min (2.25h) |
-| **`DK_2`** | 10,861 | **15.0 min** | **15.0 min** | **45.0 min** | **45.0 min** | **17.5 min** | 105 min (1.75h) |
-| **`AT`** | 18,575 | **15.0 min** | **15.0 min** | **45.0 min** | **45.0 min** | **17.0 min** | 165 min (2.75h) |
+| **`AT`** | 3,624 | **45.0 min** | **82.1 min** | **195.0 min** | **300.0 min** | **510.0 min** | 1,305 min (21.75h) |
+| **`BE`** | 2,893 | **30.0 min** | **76.0 min** | **180.0 min** | **270.0 min** | **660.0 min** | 1,545 min (25.75h) |
+| **`NL`** | 3,965 | **30.0 min** | **67.4 min** | **159.0 min** | **225.0 min** | **480.0 min** | 1,305 min (21.75h) |
+| **`FR`** | 2,448 | **30.0 min** | **66.1 min** | **165.0 min** | **255.0 min** | **525.0 min** | 1,080 min (18.00h) |
+| **`DK_1`** | 2,997 | **30.0 min** | **55.5 min** | **120.0 min** | **180.0 min** | **330.6 min** | 705 min (11.75h) |
+| **`DK_2`** | 3,284 | **30.0 min** | **53.7 min** | **120.0 min** | **165.0 min** | **300.0 min** | 930 min (15.50h) |
 
 > [!NOTE]
-> **Contiguous Event Duration Histogram Audit:**  
-> When evaluating **contiguous unbridged scarcity blocks** ($\ge €100/\text{MWh}$), clear geographical divergence emerges across European grid zones:
-> - **Austria (`AT`) & Belgium (`BE`):** Mean contiguous block durations of **82.1 minutes** and **76.0 minutes** (P90: 180–195 minutes).
-> - **Netherlands (`NL`) & France (`FR`):** Mean contiguous block durations of **67.4 minutes** and **66.1 minutes** (P90: 159–165 minutes).
-> - **Denmark West (`DK_1`) & Denmark East (`DK_2`):** Mean contiguous block durations of **55.5 minutes** and **53.7 minutes** (P90: 120 minutes).
+> **Key Finding for M1 (Physical Contiguous Scarcity Blocks):**  
+> Physical imbalance shortage scarcity events ($\ge €100/\text{MWh}$) are **not transient single-interval spikes**; they form sustained multi-hour continuous price plateaus with a pronounced geographical gradient across Europe:
+> - **Central/Alpine Grid Zones (`AT`, `BE`):** Exhibit the longest shortage durations, with mean continuous scarcity lasting **76.0 to 82.1 minutes** and P90 durations reaching **3 hours** (180–195 min).
+> - **Western Interconnected Zones (`NL`, `FR`):** Exhibit mean continuous scarcity durations of **66.1 to 67.4 minutes**, with P90 durations of **2.6 to 2.75 hours** (159–165 min).
+> - **Nordic Synchronous/Nord Pool Zones (`DK_1`, `DK_2`):** Exhibit shorter shortage durations, with mean continuous scarcity lasting **53.7 to 55.5 minutes** and P90 durations capped at **2 hours** (120 min).
 
 ---
 
@@ -108,4 +107,4 @@ To eliminate library parsing artifacts, raw XML payloads were audited directly f
 > Bidding zones in Europe operate under different TSO imbalance settlement rules (e.g. dual-pricing structure in FR and NL vs single-pricing structures in BE, DK_1, DK_2, AT). **Direct quantitative comparison between zones operating under different settlement regimes is prohibited.** Each zone's metrics represent an empirical baseline of its own local TSO settlement environment.
 
 ---
-*Published by VolMax Studio Lead Engineer | Date: 2026-07-27*
+*Status: Under Review / Verification Pending | VolMax Studio Lead Engineer | Date: 2026-07-27*
