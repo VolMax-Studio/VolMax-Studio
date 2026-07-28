@@ -46,8 +46,11 @@ All audits are DOI-archived on Zenodo with pinned data hashes and a reproducible
 We publish descriptive, reproducible baselines of public markets to establish objective empirical grounds before duration models are run or investment decisions are made. In accordance with the Open Market Notes doctrine, all metric parameters are frozen and timestamped in Git prior to data analysis.
 
 Our active market baselines are indexed in the [Open-Market-Notes](https://github.com/VolMax-Studio/Open-Market-Notes) repository:
-- **[Note #001: NEM Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/001-nem-duration-baseline)**: Scarcity pricing and charging windows in Mainland Australia NEM. Parameters frozen: 2026-07-18.
-- **[Note #002: ERCOT Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/002-ercot-duration-baseline)**: Scarcity pricing and BESS charging windows in ERCOT Hubs. Parameters frozen: 2026-07-19.
+- **[Note #001: NEM Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/001-nem-duration-baseline)**: Scarcity pricing ($300/MWh) and BESS charging windows in Mainland Australia NEM. Parameters frozen: 2026-07-18.
+- **[Note #002: ERCOT Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/002-ercot-duration-baseline)**: Scarcity pricing ($100/MWh & $250/MWh) and BESS charging windows in ERCOT Hubs. Parameters frozen: 2026-07-19.
+- **[Note #003: ENTSO-E Imbalance Price Duration Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/003-entsoe-imbalance-baseline)**: 15-minute imbalance price duration and TSO settlement incentive windows across 6 European bidding zones (`NL`, `BE`, `FR`, `DK1`, `DK2`, `AT`). Parameters frozen: 2026-07-25.
+- **[Note #004: GB BESS Duration Baseline (Elexon BMRS)](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/004-gb-duration-baseline)**: 30-minute system price scarcity runs and macro event window spans in Great Britain. Parameters frozen: 2026-07-25.
+- **[Note #005: ENTSO-E Cross-Border Physical Flow Dynamics Baseline](https://github.com/VolMax-Studio/Open-Market-Notes/tree/main/notes/005-entsoe-crossborder-flows)**: Intra-corridor net physical flow dynamics ($|P_{\text{flow}}|$ MW) across telemetered CWE bidding zone borders (`AT ↔ DE`, `BE ↔ NL`, `FR ↔ BE`, `NL ↔ DE`). Parameters frozen: 2026-07-28.
 
 ---
 
