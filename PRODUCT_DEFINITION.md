@@ -13,7 +13,12 @@
 | **Execution Mode** | Static On-Device Inference Only | **On-Device Adaptation without Backpropagation** |
 | **Memory Footprint** | Fixed model size; requires backprop GPU buffer for adaptation | **$O(1)$ Memory Depth (Forward-Only / INT4 Compatible)** |
 | **Telemetry Transport** | Raw high-frequency telemetry streamed to cloud | **Local Classification & Derating Output Only** |
-| **Privacy & Latency** | Cloud-roundtrip latency & data privacy risk | **Sub-millisecond local execution & zero telemetry leak** |
+| **Privacy & Latency** | Cloud-roundtrip latency & data privacy risk | **Designed for sub-millisecond local execution & zero telemetry leak** |
+
+### Why Adaptation Beats Static Inference + Cloud Re-training:
+* **Local Environmental Drift:** Power grid nodes experience device-specific noise, local harmonic distortion, and operational drift. Static models trained centrally on global datasets degrade over time on individual edge devices.
+* **Zero Telemetry Transport:** Re-training static models in the cloud requires continuously streaming raw high-frequency ($10-50\text{ kHz}$) waveforms off-edge—incurring prohibitive bandwidth costs and privacy risks.
+* **Memory-Constrained Local Tuning:** VolMax forward-only adaptation tunes the model locally to individual device noise distributions without requiring backprop GPU activation buffers.
 
 ### Empirical Boundary Specification:
 As established in the VolMax INT4 Benchmark (Zenodo DOI: [`10.5281/zenodo.21010289`](https://doi.org/10.5281/zenodo.21010289)):
@@ -30,10 +35,10 @@ As established in the VolMax INT4 Benchmark (Zenodo DOI: [`10.5281/zenodo.210102
 [Phase 3: Module 3]  ──> On-Device NILM Disaggregation (Smart Meter Level)
 ```
 
-### Module 1: Power Quality & Anomaly Classification (Current Priority)
+### Module 1: Power Quality & Anomaly Classification (Targeted for Validation)
 * **Hardware Target:** Inverter / Microgrid Controller / Power Quality Monitor.
-* **Core Function:** On-device real-time classification of 17 power quality disturbance types (sags, swells, harmonics, transients) using localized forward-only adaptation.
-* **Empirical Selection Rationale:** Selected as Module 1 because it represents feedforward signal classification—the exact category where forward-only adaptation was empirically proven to hold in the INT4 benchmark.
+* **Core Function:** On-device real-time classification of power quality disturbance types (sags, swells, harmonics, transients) using localized forward-only adaptation.
+* **Empirical Benchmark Analogy Note:** *17 disturbance classes target is derived via benchmark analogy from `PowerQuality_Classifier_Portfolio` and feedforward INT4 classification results. Validation of forward-only adaptation on PQ signals is subject to explicit empirical measurement in `VolMax_Edge_PQ` (`EXPERIMENT.md`).*
 * **Baseline Lineage:** Leverages physical feature extraction from `PowerQuality_Classifier_Portfolio`.
 
 ### Module 2: SOH / RUL Degradation Tracking (Phased Architecture)
