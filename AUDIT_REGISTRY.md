@@ -11,9 +11,9 @@ Five asset audits against public settlement and market telemetry. Rules were pre
 | **Bat Cave BESS** — 100 MW / 100 MWh (ERCOT, US-TX) | 100 MW active power | **Not Demonstrated** — peak observed 72.61 MW | [10.5281/zenodo.21401795](https://doi.org/10.5281/zenodo.21401795) |
 | **Bat Cave BESS** | 100 MWh energy capacity | **Not Demonstrated** — largest continuous discharge 58.0 MWh | [10.5281/zenodo.21401795](https://doi.org/10.5281/zenodo.21401795) |
 | **Bat Cave BESS** | SoC telemetry consistency | **Inconsistent** per frozen rule; field definition **Deferred** | [10.5281/zenodo.21401795](https://doi.org/10.5281/zenodo.21401795) |
-| **esVolta Anole ESS** — 240 MW / 480 MWh (ERCOT, US-TX) | 240 MW active power | **Demonstrated** | [10.5281/zenodo.21304134](https://doi.org/10.5281/zenodo.21304134) |
-| **esVolta Anole ESS** | 480 MWh energy capacity | **Demonstrated** | [10.5281/zenodo.21304134](https://doi.org/10.5281/zenodo.21304134) |
-| **esVolta Anole ESS** | SoC telemetry consistency | **Inconsistent** per frozen rule; field semantics **Deferred** | [10.5281/zenodo.21304134](https://doi.org/10.5281/zenodo.21304134) |
+| **esVolta Anole ESS** — 240 MW / 480 MWh (ERCOT, US-TX) | 240 MW active power | **Demonstrated** | [10.5281/zenodo.21304135](https://doi.org/10.5281/zenodo.21304135) |
+| **esVolta Anole ESS** | 480 MWh energy capacity | **Demonstrated** | [10.5281/zenodo.21304135](https://doi.org/10.5281/zenodo.21304135) |
+| **esVolta Anole ESS** | SoC telemetry consistency | **Inconsistent** per frozen rule; field semantics **Deferred** | [10.5281/zenodo.21304135](https://doi.org/10.5281/zenodo.21304135) |
 | **Pillswood BESS** — 98 MW / 196 MWh (Elexon, GB) | 98 MW active power | **Demonstrated** | [repository](https://github.com/VolMax-Studio/volmax-gb-bess-audit) |
 | **Pillswood BESS** | 196 MWh energy capacity | **Verified with Limitations** (bounded) | [repository](https://github.com/VolMax-Studio/volmax-gb-bess-audit) |
 | **ECO STOR Bollingstedt** — 103.5 MW (DE) | Physical grid limits | **Verified with Limitations** — 180 deviations, 0.47% of intervals | [10.5281/zenodo.21135861](https://doi.org/10.5281/zenodo.21135861) |
