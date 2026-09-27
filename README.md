@@ -1,89 +1,67 @@
 # VolMax Studio Lab
 
-**Independent verification of operational claims about grid-scale energy storage.**
+**Independent verification of technical claims. Frozen rules, reproducible code, bounded verdicts.**
 
-We do not build models, sell optimisation, or advise on decisions. We take a public,
-attributable claim about an asset, freeze the test rules in Git before pulling data,
-and publish the verdict with the code that regenerates every number in it.
+We build public research artifacts around a narrow question:
 
-If we say a claim holds, it is because we first tried to show it does not.
+> **What does the available evidence actually support — and where does it stop?**
 
----
+Our work combines preregistered tests, reproducible computation, formal verification where appropriate, explicit provenance, and bounded conclusions.
 
-## Evidence registry
+Two ERCOT battery assets illustrate the method: the same public telemetry source and the same frozen rules produced opposite outcomes. esVolta Anole demonstrated its 240 MW / 480 MWh nameplate under the preregistered tests; Bat Cave did not demonstrate its 100 MW claim, with a peak observed value of 72.61 MW.  
+→ [Full audit registry](AUDIT_REGISTRY.md)
 
-Five asset audits against public settlement and market telemetry. Rules pre-registered;
-every number regenerates from one script; raw-data provenance pinned by SHA-256.
+## Current research
 
-| Asset | Claim under test | Verdict | Record |
-|---|---|---|---|
-| **Bat Cave BESS** — 100 MW / 100 MWh (ERCOT, US-TX) | 100 MW active power | **Not Demonstrated** — peak observed 72.61 MW | [10.5281/zenodo.21401795](https://doi.org/10.5281/zenodo.21401795) |
-| **Bat Cave BESS** | 100 MWh energy capacity | **Not Demonstrated** — largest continuous discharge 58.0 MWh | [10.5281/zenodo.21401795](https://doi.org/10.5281/zenodo.21401795) |
-| **Bat Cave BESS** | SoC telemetry consistency | **Inconsistent** per frozen rule; field definition **Deferred** | [10.5281/zenodo.21401795](https://doi.org/10.5281/zenodo.21401795) |
-| **esVolta Anole ESS** — 240 MW / 480 MWh (ERCOT, US-TX) | 240 MW active power | **Demonstrated** | [10.5281/zenodo.21304134](https://doi.org/10.5281/zenodo.21304134) |
-| **esVolta Anole ESS** | 480 MWh energy capacity | **Demonstrated** | [10.5281/zenodo.21304134](https://doi.org/10.5281/zenodo.21304134) |
-| **esVolta Anole ESS** | SoC telemetry consistency | **Inconsistent** per frozen rule; field semantics **Deferred** | [10.5281/zenodo.21304134](https://doi.org/10.5281/zenodo.21304134) |
-| **Pillswood BESS** — 98 MW / 196 MWh (Elexon, GB) | 98 MW active power | **Demonstrated** | [repository](https://github.com/VolMax-Studio/volmax-gb-bess-audit) |
-| **Pillswood BESS** | 196 MWh energy capacity | **Verified with Limitations** (bounded) | [repository](https://github.com/VolMax-Studio/volmax-gb-bess-audit) |
-| **ECO STOR Bollingstedt** — 103.5 MW (DE) | Physical grid limits | **Verified with Limitations** — 180 deviations, 0.47% of intervals | [10.5281/zenodo.21135861](https://doi.org/10.5281/zenodo.21135861) |
-| **ECO STOR Bollingstedt** | Regime shift, July 2025 | **Verified with Limitations** — changepoint 5 July 2025 | [10.5281/zenodo.21135861](https://doi.org/10.5281/zenodo.21135861) |
-| **AEMO NEM fleet** — 16 units ≥50 MW (AU) | 5-minute dispatch conformance | **Verified with Limitations** | [10.5281/zenodo.21190093](https://doi.org/10.5281/zenodo.21190093) |
+### P10 — proof-carrying adjudication
 
-Two ERCOT assets, the same telemetry source, the same frozen rules, opposite outcomes.
-The method distinguishes; it does not decide in advance. An audit practice that has
-never returned an adverse verdict is not evidence of independence.
+[`p10-underdetermination-profile`](https://github.com/VolMax-Studio/p10-underdetermination-profile) is a **release candidate** for a third-party-verifiable binding of `NotDemonstrated(reason=underdetermined)`.
 
-**Pillswood note:** the archived record is v1.0 (July 2026); the repository is at v2.4
-and carries subsequent L0 corrections. The repository is the current state; the archive
-is the timestamped original. Both are public.
+A conforming receipt carries two witness worlds that are compatible with the same closed evidence set but produce different values for the same frozen claim. The repository includes the profile specification, Lean reference kernel, exact artifact manifests, and independent gate reports.
 
-**Verdict vocabulary:** Demonstrated · Verified · Verified with Limitations ·
-Inconsistent · Not Demonstrated · Not Verified · Deferred · Unfalsifiable-as-Stated.
-Defined in the protocol, not chosen per report.
+[`p10-core`](https://github.com/VolMax-Studio/p10-core) contains the Lean-oriented core work behind the broader P10 verification method.
 
----
+### Representation lifting
+
+[`representation-lifting-s1`](https://github.com/VolMax-Studio/representation-lifting-s1) is a **preregistered controlled experiment** testing whether representation-first formalization can discover useful structure on externally sampled blind theorem statements and amortize setup cost across related theorem families.
+
+The experimental architecture, verifier, selection custody, negative control, and analysis rules are public. The blind evaluation remains pending; no outcome is claimed here.
+
+### Formal mathematics & scientific reproduction
+
+[`primitive-composition-square-content-s1`](https://github.com/VolMax-Studio/primitive-composition-square-content-s1) — Lean 4 formalization of gcd structure and square content in compositions of primitive Pythagorean triples.
+
+[`rotation-gap-fano-lean-certificates`](https://github.com/VolMax-Studio/rotation-gap-fano-lean-certificates) — Lean certificates associated with an independent reproduction of bounded Willow Fano-statistics claims.
+
+## Energy-system verification
+
+We audit public operational claims about grid-scale storage against independent public telemetry from ERCOT, AEMO NEM, Elexon/BMRS, and continental European sources.
+
+The detailed records, including adverse and limited verdicts, are preserved in the [audit registry](AUDIT_REGISTRY.md).
+
+[`Open-Market-Notes`](https://github.com/VolMax-Studio/Open-Market-Notes) contains reproducible descriptive baselines of public electricity-market telemetry.
 
 ## Method
 
-**The Verification Gap in Grid-Scale Assets: The P10 Non-Invasive Falsification Protocol**
-— [10.5281/zenodo.21320140](https://doi.org/10.5281/zenodo.21320140)
+A typical investigation follows:
 
-Claim pinned verbatim → decomposed into falsifiable sub-claims → rules frozen and
-committed before data acquisition → licence verified before download → integrity,
-physics, statistics, reproducibility → verdict → immutable package with checksums.
+`claim pinned verbatim → falsifiable sub-claims → rules frozen before data → licence/provenance check → execution → verification → limitations → bounded verdict → archived package`
 
-A failure at any stage halts the audit and is reported as such. Limitations lead the
-report; they are not an appendix. We audit public nameplate claims against independent
-public telemetry — no access to operator systems, and none requested.
+Verdicts come from a fixed vocabulary:
 
----
+**Demonstrated · Verified · Verified with Limitations · Inconsistent · Not Demonstrated · Not Verified · Deferred · Unfalsifiable-as-Stated**
 
-## Market measurement
+A formal proof establishes derivability inside a formal system. It does **not** by itself establish that the formal statement captures the intended real-world claim. That semantic boundary is stated rather than assumed.
 
-Descriptive baselines of public electricity markets. These pass no verdict on any
-operator or asset; they measure the market.
+Cryptographic hashes and signatures establish artifact identity and provenance; they do not establish semantic correctness.
 
-| # | Market | Measure | Record |
-|---|---|---|---|
-| 001 | AEMO NEM | Scarcity duration baseline, 13 months | [10.5281/zenodo.21693239](https://doi.org/10.5281/zenodo.21693239) |
-| 002 | ERCOT | Scarcity duration baseline, 13 months | [10.5281/zenodo.21693245](https://doi.org/10.5281/zenodo.21693245) |
-| 003 | ENTSO-E | Imbalance price duration baseline, 6 zones | [10.5281/zenodo.21693254](https://doi.org/10.5281/zenodo.21693254) |
-| 004 | GB (Elexon BMRS) | BESS duration baseline, 13 months | [10.5281/zenodo.21693262](https://doi.org/10.5281/zenodo.21693262) |
-| 005 | ENTSO-E | Cross-border physical flow dynamics | [10.5281/zenodo.21693276](https://doi.org/10.5281/zenodo.21693276) |
+## Reproducibility
+
+Our own errors remain visible in the public record. If a preregistered hypothesis is invalidated by a scoping error, it is voided rather than silently re-anchored to the observed data.
+
+If you reproduce different numbers from ours, open an issue. We will re-run the analysis and publish the correction.
 
 ---
 
-## Our own errors are published with the findings
-
-Every package carries a failure log. Errors found in our own work stay visible, dated,
-and archived — including a pre-registration scoping error that voided one of our own
-hypotheses mid-audit rather than being quietly re-anchored to the observed data.
-
-If you reproduce different numbers from ours, tell us. We will re-run and publish the fix.
-
----
-
-## Contact
-
-Ivan Nestorov · VolMax Studio Lab d.o.o., Serbia
-ORCID [0009-0006-7940-9539](https://orcid.org/0009-0006-7940-9539) · volmax.core@gmail.com
+**Ivan Nestorov** · VolMax Studio Lab d.o.o. · Serbia  
+[ORCID 0009-0006-7940-9539](https://orcid.org/0009-0006-7940-9539) · volmax.core@gmail.com · [www.volmax-studio.rs](https://www.volmax-studio.rs)
