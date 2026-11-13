@@ -11,6 +11,23 @@ Our work combines preregistered tests, reproducible computation, formal verifica
 Two ERCOT battery assets illustrate the method: the same public telemetry source and the same frozen rules produced opposite outcomes. esVolta Anole demonstrated its 240 MW / 480 MWh nameplate under the preregistered tests; Bat Cave did not demonstrate its 100 MW claim, with a peak observed value of 72.61 MW.  
 → [Full audit registry](AUDIT_REGISTRY.md)
 
+## Applied engineering work
+
+[VolMax Battery Verification Lab](https://github.com/VolMax-Studio/volmax-battery-verification-lab) — public v0.1 technical demonstrator.
+
+Three separate examples of evidence-based verification:
+
+- **Battery health — Sandia:** Real NMC cell measurements; 92.548% capacity retention over defined cycle windows, with anomaly checks and bounded conclusions.
+- **BESS field performance — PNNL/EPRI ENW:** Five descriptive energy ratios ranging from 74.5% to 88.9%, depending on measurement boundary and observation window. Contractual RTE remains Not Demonstrated.
+- **Second-life battery screening:** Illustrative P10 evidence-adjudication cases using synthetic test vectors and an interactive explorer.
+
+The lab demonstrates reproducible calculations, evidence manifests, explicit verification criteria and limitations.  
+It is not an EU Digital Battery Passport, UL 1974 certification or FAT/SAT acceptance result.
+
+Live demonstration: https://volmax-battery-verification-lab.vercel.app
+
+Available for technical engagements: BESS commissioning and operational evidence checks (SCADA/BMS/EMS/PCC), technical claim verification and power-signal analysis.
+
 ## Current research
 
 ### P10 — proof-carrying adjudication
